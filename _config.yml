@@ -10,6 +10,7 @@ keywords:
 author: 2inc
 language: zh-CN
 timezone: ''
+email: zinan2inc@163.com
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -103,5 +104,7 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: https://github.com/2incccc/2inccc.github.io.git
+  repo: https://github.com/2incccc/2incccc.github.io.git
   branch: main
+
+# Menu
