@@ -107,4 +107,8 @@ deploy:
   repo: https://github.com/2incccc/2incccc.github.io.git
   branch: main
 
-# Menu
+# disqus
+disqus:
+  enable: true
+  shortname: 2incccc-blog
+  count: true
