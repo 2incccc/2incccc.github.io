@@ -271,8 +271,8 @@ comments:
 # disqus
 # https://disqus.com/
 disqus:
-  shortname: 2incccc-blog
-  apikey: Lr0HJnS4RtMlwSXNLp9lgTC4twEJfvGdAjIvZSvV3Wpakd5JM3CrULi6ZjRPDJjw
+  shortname: 
+  apikey: 
 # Alternative Disqus - Render comments with Disqus API
 # DisqusJS 評論系統，可以實現在網路審查地區載入 Disqus 評論列表，兼容原版
 # https://github.com/SukkaW/DisqusJS
@@ -284,7 +284,7 @@ disqusjs:
 # livere (來必力)
 # https://www.livere.com/
 livere:
-  uid:
+  uid: MTAyMC81NzEwMS8zMzU2NQ==
 
 # gitalk
 # https://github.com/gitalk/gitalk
