@@ -1,39 +1,68 @@
 - class_name: 友情链接
-  class_desc: 欢迎访问喵~
+  class_desc: 感谢他们的支持！
   link_list:
     - name: Hexo
       link: https://hexo.io/zh-tw/
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: 快速、简单且强大的网志框架喵
+    - name: Butterfly
+      link: https://butterfly.js.org/
+      avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
+      descr: A Simple and Card UI Design theme for Hexo
+    - name: HEO
+      link: https://blog.zhheo.com/
+      avatar: https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16614845055271661484505065.png
+      descr: 设计赋能 Design empowering
 
-- class_name: 网站
-  class_desc: 博主经常使用、值得推荐的网站
+- class_name: 常用网站
+  class_desc: 值得推荐的网站喵
   link_list:
-    - name: Youtube
-      link: https://www.youtube.com/
-      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
-      descr: 世界上最大的视频网站
-    - name: Weibo
-      link: https://www.weibo.com/
-      avatar: https://i.loli.net/2020/05/14/TLJBum386vcnI1P.png
-      descr: 中国最大社交分享平台
+    - name: 码云
+      link: https://gitee.com/
+      avatar: https://gitee.com/static/images/logo_icon.png
+      descr: “为了营造绿色健康的开源社区，推动中国开源生态建设，当前仓库仅限登录用户访问。”
+    - name: Github
+      link: https://github.com/
+      avatar: https://github.githubassets.com/apple-touch-icon-180x180.png
+      descr: The complete developer platform to build, scale, and deliver secure software.
+    - name: Z-Library
+      link: https://zh.booksc.org/
+      avatar: https://zh.booksc.org/favicon.ico
+      descr: 全球最大的科学文章库,70,000,000+ 篇文章免费。
+    - name: MDN Web Docs
+      link: https://developer.mozilla.org/zh-CN/docs/Learn
+      avatar: https://developer.mozilla.org/apple-touch-icon.6803c6f0.png
+      descr: 本系列文章旨在为零基础 Web 开发初学者提供指导和开始编写网站代码所需的所有内容。
     - name: Twitter
       link: https://twitter.com/
       avatar: https://i.loli.net/2020/05/14/5VyHPQqR6LWF39a.png
-      descr: 社交分享平台(x
+      descr: 社交分享平台(x(你知道我想说什么
     - name: bilibili
       link: https://www.bilibili.com/
-      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
-      descr: 世界上最大的视频网站
-    - name: Youtube
-      link: https://www.youtube.com/
-      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
-      descr: 世界上最大的视频网站
-    - name: Youtube
-      link: https://www.youtube.com/
-      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
-      descr: 世界上最大的视频网站
-    - name: Youtube
-      link: https://www.youtube.com/
-      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
-      descr: 世界上最大的视频网站
+      avatar: https://static.hdslb.com/mobile/img/512.png
+      descr: 叔叔我啊，最喜欢💰了
+    - name: 知乎
+      link: https://www.zhihu.com/
+      avatar: https://static.zhihu.com/heifetz/assets/apple-touch-icon-152.a53ae37b.png
+      descr: 人在美国，刚下飞机
+    - name: 百度贴吧
+      link: https://tieba.baidu.com/
+      avatar: https://tieba.baidu.com/favicon.ico
+      descr: 一眼丁真，鉴定为假
+    - name: 北京邮电大学
+      link: https://www.bupt.edu.cn/
+      avatar: https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1661484680406R-C.jpg
+      descr: 厚德博学 敬业乐群
+    - name: 北邮人论坛
+      link: https://bbs.byr.cn/index
+      avatar: https://bbs.byr.cn/favicon.ico	
+      descr: 同学，我来拯救你的价值观
+    - name: 微信公众平台
+      link: https://mp.weixin.qq.com/
+      avatar: https://res.wx.qq.com/a/wx_fed/assets/res/OTE0YTAw.png
+      descr: 信通导论最爱的微信小程序🤗
+    - name: 米游社·原神
+      link: https://bbs.mihoyo.com/ys/
+      avatar: https://bbs.mihoyo.com/favicon.ico
+      descr: 你说得对，但是《原神》是米哈游开发的动作角色扮演游戏，具有动漫风格的开放世界环境......后面的我忘了
+
