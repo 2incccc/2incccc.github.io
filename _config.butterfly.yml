@@ -77,12 +77,11 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg
+  img: https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/166066346148718674fd5fc3ac1e3844f24fd0dbcf971efc97f61.png
   effect: true
 
 # Disable all banner image
 disable_top_img: false
-
 # The banner image of home page
 index_img: https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/166066346148718674fd5fc3ac1e3844f24fd0dbcf971efc97f61.png
 
@@ -112,9 +111,9 @@ category_per_img:
 
 cover:
   # display the cover or not (是否顯示文章封面)
-  index_enable: false
-  aside_enable: false
-  archives_enable: false
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
   # the position of cover in home page (封面顯示的位置)
   # left/right/both
   position: both
