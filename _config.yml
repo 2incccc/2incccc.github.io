@@ -46,11 +46,9 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
-  hljs: false
+  hljs: true
+  auto_detect: true
+
 prismjs:
   enable: false
   preprocess: true
@@ -112,4 +110,9 @@ disqus:
   enable: true
   shortname: 2incccc-blog
   count: true
+
+toc:
+  maxdepth: 3
+
+
 

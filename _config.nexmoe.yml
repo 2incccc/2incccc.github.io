@@ -108,11 +108,13 @@ slotHead: ''
 slotFooter: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>'
 
 
-# 评论框插槽
-slotComment: 'livere'
-
 
 slotCopyright: '<strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可'
+
+highlight:
+  enable: true
+  hljs: true
+  auto_detect: true
 
 
 
