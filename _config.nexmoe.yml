@@ -1,6 +1,6 @@
 avatar: https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16606631214151660663120879.png # 网站 Logo
 background: # 既是博客的背景，又是文章默认头图
-    path: https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/166066346148718674fd5fc3ac1e3844f24fd0dbcf971efc97f61.png
+    path: https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1669192264933wallhaven-j3m8y5.png
     width: 1280
     height: 726
 favicon:
@@ -73,7 +73,7 @@ widgets:
                 - rgb(139, 192, 249)
                 - rgba(139, 192, 249, .1)
     - name: category
-      enable: true
+      enable: false
     - name: tagcloud
       enable: true
       options: 

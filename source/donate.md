@@ -1,8 +1,6 @@
 ---
-title: links
-date: 2013/7/13 20:46:25
-layout: py
-permalink: PY.html
+title: 给我赞助
+layout: donate
 ---
 > 404.That's an error.
 > The requested URL /404 was not found on this server.
