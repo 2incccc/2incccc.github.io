@@ -123,4 +123,6 @@ mathjax:
   append_css: true # add CSS to pages rendered by MathJax
   every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
 
-
+markdown:
+  plugins:
+    - "@traptitech/markdown-it-katex"
