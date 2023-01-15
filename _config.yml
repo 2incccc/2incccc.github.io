@@ -102,7 +102,9 @@ theme: volantis
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: https://gitee.com/zinan2inc/zinan2inc.git
+  repo: 
+    gitee: https://gitee.com/zinan2inc/zinan2inc.git
+    github: git@github.com:2incccc/2incccc.github.io.git
   branch: main
 
 # disqus
