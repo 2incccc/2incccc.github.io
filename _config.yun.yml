@@ -5,10 +5,10 @@ mode: auto
 # Theme color for customize
 # Notice: color value must in double quotes: "#000000"
 colors:
-  primary: "#0078E7"
+  primary: "#58b1e8"
   # primary: "#6200ee"
-  bg: "#f5f5f5"
-  selection_bg: "#8e71c1"
+  bg: "#d3dade"
+  selection_bg: "#0d2dde"
   tag_start_color: "#999999"
   tag_end_color: "#0078E7"
   dark:
@@ -17,7 +17,7 @@ colors:
 
 # Favicon
 # ---------------
-favicon: /yun.svg
+favicon: /favicon.ico
 
 # ---------------------------------------------------------------
 # Sidebar Settings
@@ -47,10 +47,10 @@ social:
 #   link: /atom.xml # config.feed.path
 #   icon: ri:rss-line
 #   color: orange
-# - name: GitHub
-#   link: https://github.com/YunYouJun
-#   icon: ri:github-line
-#   color: "#6e5494"
+- name: GitHub
+  link: https://github.com/2incccc
+  icon: ri:github-line
+  color: "#6e5494"
 # - name: 微博
 #   link: https://weibo.com/jizhideyunyoujun
 #   icon: ri:weibo-line
@@ -59,18 +59,18 @@ social:
 #   link: https://www.douban.com/people/yunyoujun/
 #   icon: ri:douban-line
 #   color: "#007722"
-# - name: 网易云音乐
-#   link: https://music.163.com/#/user/home?id=247102977
-#   icon: ri:netease-cloud-music-line
-#   color: "#C20C0C"
+- name: 网易云音乐
+  link: https://music.163.com/#/user/home?id=1514876667
+  icon: ri:netease-cloud-music-line
+  color: "#C20C0C"
 # - name: 知乎
 #   link: https://www.zhihu.com/people/yunyoujun/
 #   icon: ri:zhihu-line
 #   color: "#0084FF"
-# - name: 哔哩哔哩
-#   link: https://space.bilibili.com/1579790
-#   icon: ri:bilibili-line
-#   color: "#FF8EB3"
+- name: 哔哩哔哩
+  link: https://space.bilibili.com/1579790
+  icon: ri:bilibili-line
+  color: "#FF8EB3"
 # - name: 微信公众号
 #   link: https://cdn.yunyoujun.cn/img/about/white-qrcode-and-search.jpg
 #   icon: ri:wechat-2-line
@@ -79,23 +79,27 @@ social:
 #   link: https://twitter.com/YunYouJun
 #   icon: ri:twitter-line
 #   color: "#1da1f2"
-# # - name: Telegram
-# #   link: https://t.me/yunyoujun_group
-# #   icon: ri:telegram-line
-# #   color: "#0088CC"
+- name: Telegram
+  link: https://t.me/zinan2inc
+  icon: ri:telegram-line
+  color: "#0088CC"
 # - name: Telegram Channel
 #   link: https://t.me/elpsycn
 #   # icon: ri:telegram-fill
 #   icon: ri:telegram-line
 #   color: "#0088CC"
-# - name: E-Mail
-#   link: mailto:me@yunyoujun.cn
-#   icon: ri:mail-line
-#   color: "#8E71C1"
+- name: E-Mail
+  link: mailto:zinan2inc@163.com
+  icon: ri:mail-line
+  color: "#8E71C1"
 # - name: Travelling
 #   link: https://travellings.link
 #   icon: ri:train-line
 #   color: black
+- name: Gitee
+  link: https://gitee.com/zinan2inc
+  icon: icon-gitee-fill-round
+  color: "#eb3723"
 
 codeblock:
   copy_btn: true
@@ -106,6 +110,12 @@ pages:
     url: /links/
     icon: ri:genderless-line
     color: dodgerblue
+  - name: 留言板
+    url: 
+    icon: 
+    color:
+  - name: 官方文档
+    url: 
 
 # pages
 # -------
@@ -122,7 +132,7 @@ girls:
 # Sidebar Avatar
 avatar:
   enable: true
-  url: /yun.png
+  url: /img/2inc01.png
   # If true, the avatar would be dispalyed in circle.
   rounded: true
   # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.
@@ -149,7 +159,7 @@ menu:
       path: /tags/
       icon: ri:price-tag-3-line
   custom:
-    title: 文档
+    title: 官方文档
     path: https://yun.yunyoujun.cn
     icon: ri:settings-line
 
@@ -158,7 +168,7 @@ archive:
   last_word: 没有更多的黑历史了_(:з」∠)_
 
 wordcloud:
-  enable: false
+  enable: true
   height: 350
 
 # You can set color for every tag or category.
@@ -177,7 +187,7 @@ tags:
   Laravel: "#F4645F"
 
 categories:
-  笔记: dimgray
+  作业留档: dimgray
 
 # post type
 types:
@@ -258,6 +268,7 @@ head:
   js:
     base:
     async:
+      iconfont: //at.alicdn.com/t/c/font_3621263_gb777qrh3fl.css
     defer:
 
 # cdn for third-party library (always include)
@@ -280,7 +291,7 @@ vendors:
 # UI
 banner:
   enable: true
-  title: 云游君的小站
+  title: 穿梭時間的畫面的鐘
   border: true
   cloud:
     enable: true
@@ -352,7 +363,7 @@ bg_image:
 # If enable true, reward would be displayed in every posts and pages by default.
 # You can show or hide reward in a specific page throuth `reward: true | false` in Front Matter.
 reward:
-  enable: true
+  enable: false
   icon: ri:hand-coin-line
   comment: I'm so cute. Please give me money.
   # url: https://github.com/YunYouJun/yunyoujun.github.io/issues/96
@@ -401,7 +412,7 @@ post_edit:
 # Footer Settings
 # ---------------
 footer:
-  since: 2019
+  since: 2022
 
   # Icon between year and copyright info.
   icon:
@@ -429,10 +440,10 @@ footer:
       id: XXXXXXXX
 
   live_time:
-    enable: false
-    prefix: 本博客已萌萌哒地运行
+    enable: true
+    prefix: 本博客已运行
     suffix: (●'◡'●)
-    start_time: "2019-04-12T00:00:00"
+    start_time: "2023-01-15T00:00:00"
 
   # Display support
   # support:
@@ -447,7 +458,7 @@ footer:
 
 # Post meta display settings
 post_meta:
-  item_text: false
+  item_text: true
   created_at: true
   updated_at: true
   categories: true
@@ -455,7 +466,7 @@ post_meta:
 
 # notice pin board
 notice:
-  enable: false
+  enable: true
   content: Thanks for watching my blog.
 
 # third party
@@ -474,7 +485,7 @@ say:
   api: https://el-bot-api.vercel.app/api/words/young
   # https://developer.hitokoto.cn/sentence/
   hitokoto:
-    enable: false
+    enable: true
     api: https://v1.hitokoto.cn
     # api: https://v1.hitokoto.cn?c=a&c=b&c=c&c=d&c=k
 
@@ -497,7 +508,7 @@ busuanzi:
 # Post wordcount
 # https://github.com/willin/hexo-wordcount
 wordcount:
-  enable: false
+  enable: true
   count: true
   time: true
 
@@ -517,7 +528,7 @@ engine_search:
 
 # Dependencies https://github.com/next-theme/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
@@ -696,8 +707,8 @@ disqusjs:
 
 # https://livere.com/
 livere:
-  enable: false
-  uid:
+  enable: true
+  uid: 'MTAyMC81NzEwMS8zMzU2NQ=='
 
 # https://github.com/utterance/utterances
 utterances:
