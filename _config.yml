@@ -46,8 +46,6 @@ relative_link: false
 future: true
 highlight:
   enable: false
-  hljs: true
-  auto_detect: true
 
 prismjs:
   enable: true
