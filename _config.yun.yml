@@ -33,11 +33,11 @@ sidebar:
     amount: 20
 
 toc:
-  list_number: true
-  max_depth: 6
+  list_number: false
+  max_depth: 1000
   min_depth: 1
   placeholder: 很遗憾，咱没写啥目录
-  collapse: true
+  collapse: false
 
 # Social Links.
 social:
@@ -111,14 +111,14 @@ codeblock:
 
 # Extra links
 pages:
-  - name: 我的小伙伴们
-    url: /links/
-    icon: ri:group-line
-    color: "#69afe0"
   - name: 官方文档
     url: https://yun.yunyoujun.cn
     icon: ri:book-3-line
     color: dodgerblue
+  - name: 我的小伙伴们
+    url: /links/
+    icon: ri:group-line
+    color: "#12c483"
   - name: 留言板
     url: /Message_board/
     icon: ri:chat-4-line
@@ -169,7 +169,7 @@ menu:
   custom:
     title: 关于博主
     path: /about/
-    icon: ri:account-box-line
+    icon: ri:body-scan-fill
 
 # archive
 archive:
