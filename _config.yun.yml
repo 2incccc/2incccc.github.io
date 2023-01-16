@@ -5,7 +5,7 @@ mode: auto
 # Theme color for customize
 # Notice: color value must in double quotes: "#000000"
 colors:
-  primary: "#58b1e8"
+  primary: "#32b3a6"
   # primary: "#6200ee"
   bg: "#d3dade"
   selection_bg: "#0d2dde"
@@ -25,9 +25,9 @@ favicon: /favicon.ico
 
 # Posts / Categories / Tags in sidebar.
 sidebar:
-  bg_image: https://cdn.yunyoujun.cn/img/bg/alpha-stars-timing-1.webp
+  bg_image: /img/klee.jpg
   # dark_bg_image: https://cdn.yunyoujun.cn/img/bg/dark-alpha-stars-timing-1.webp
-  bg_position: bottom 1rem center
+  bg_position: bottom -3rem center
   tagcloud:
     enable: false
     amount: 20
@@ -36,21 +36,41 @@ toc:
   list_number: true
   max_depth: 6
   min_depth: 1
-  # placeholder: 很遗憾，咱没写啥目录
+  placeholder: 很遗憾，咱没写啥目录
   collapse: true
 
 # Social Links.
 social:
+- name: GitHub
+  link: https://github.com/2incccc
+  icon: ri:github-line
+  color: "#6e5494"
+- name: Gitee
+  link: https://gitee.com/zinan2inc
+  icon: icon-gitee-fill-round
+  color: "#eb3723" 
+- name: 哔哩哔哩
+  link: https://space.bilibili.com/1579790
+  icon: ri:bilibili-line
+  color: "#FF8EB3"
+- name: 网易云音乐
+  link: https://music.163.com/#/user/home?id=1514876667
+  icon: ri:netease-cloud-music-line
+  color: "#C20C0C"
+- name: Telegram
+  link: https://t.me/zinan2inc
+  icon: ri:telegram-line
+  color: "#0088CC"
+- name: E-Mail
+  link: mailto:zinan2inc@163.com
+  icon: ri:mail-line
+  color: "#8E71C1"
 # - name: RSS
 #   # set rss in your root config
 #   # https://github.com/hexojs/hexo-generator-feed
 #   link: /atom.xml # config.feed.path
 #   icon: ri:rss-line
 #   color: orange
-- name: GitHub
-  link: https://github.com/2incccc
-  icon: ri:github-line
-  color: "#6e5494"
 # - name: 微博
 #   link: https://weibo.com/jizhideyunyoujun
 #   icon: ri:weibo-line
@@ -59,18 +79,12 @@ social:
 #   link: https://www.douban.com/people/yunyoujun/
 #   icon: ri:douban-line
 #   color: "#007722"
-- name: 网易云音乐
-  link: https://music.163.com/#/user/home?id=1514876667
-  icon: ri:netease-cloud-music-line
-  color: "#C20C0C"
+
 # - name: 知乎
 #   link: https://www.zhihu.com/people/yunyoujun/
 #   icon: ri:zhihu-line
 #   color: "#0084FF"
-- name: 哔哩哔哩
-  link: https://space.bilibili.com/1579790
-  icon: ri:bilibili-line
-  color: "#FF8EB3"
+
 # - name: 微信公众号
 #   link: https://cdn.yunyoujun.cn/img/about/white-qrcode-and-search.jpg
 #   icon: ri:wechat-2-line
@@ -79,27 +93,18 @@ social:
 #   link: https://twitter.com/YunYouJun
 #   icon: ri:twitter-line
 #   color: "#1da1f2"
-- name: Telegram
-  link: https://t.me/zinan2inc
-  icon: ri:telegram-line
-  color: "#0088CC"
+
 # - name: Telegram Channel
 #   link: https://t.me/elpsycn
 #   # icon: ri:telegram-fill
 #   icon: ri:telegram-line
 #   color: "#0088CC"
-- name: E-Mail
-  link: mailto:zinan2inc@163.com
-  icon: ri:mail-line
-  color: "#8E71C1"
+
 # - name: Travelling
 #   link: https://travellings.link
 #   icon: ri:train-line
 #   color: black
-- name: Gitee
-  link: https://gitee.com/zinan2inc
-  icon: icon-gitee-fill-round
-  color: "#eb3723"
+
 
 codeblock:
   copy_btn: true
@@ -108,14 +113,17 @@ codeblock:
 pages:
   - name: 我的小伙伴们
     url: /links/
-    icon: ri:genderless-line
+    icon: ri:group-line
+    color: "#69afe0"
+  - name: 官方文档
+    url: https://yun.yunyoujun.cn
+    icon: ri:book-3-line
     color: dodgerblue
   - name: 留言板
-    url: 
-    icon: 
-    color:
-  - name: 官方文档
-    url: 
+    url: /Message_board/
+    icon: ri:chat-4-line
+    color: "#e08134"
+
 
 # pages
 # -------
@@ -159,9 +167,9 @@ menu:
       path: /tags/
       icon: ri:price-tag-3-line
   custom:
-    title: 官方文档
-    path: https://yun.yunyoujun.cn
-    icon: ri:settings-line
+    title: 关于博主
+    path: /about/
+    icon: ri:account-box-line
 
 # archive
 archive:
@@ -268,7 +276,7 @@ head:
   js:
     base:
     async:
-      iconfont: //at.alicdn.com/t/c/font_3621263_gb777qrh3fl.css
+      iconfont: //at.alicdn.com/t/c/font_3621263_co71z7kg16q.js
     defer:
 
 # cdn for third-party library (always include)
@@ -319,11 +327,11 @@ font:
 fireworks:
   enable: true
   colors:
-  # - "102, 167, 221"
-  # - "62, 131, 225"
-  # - "33, 78, 194"
-  # - "3, 28, 95"
-  # - "0, 8, 55"
+  - "208, 219, 218"
+  - "169, 219, 215"
+  - "123, 219, 211"
+  - "81, 219, 208"
+  - "44, 219, 204"
 
 # https://github.com/qrohlf/trianglify
 trianglify:
@@ -336,7 +344,7 @@ trianglify:
   opacity: 0.5
 
 cursor:
-  enable: false
+  enable: true
   default: https://cdn.yunyoujun.cn/css/md-cursors/pointer.cur
   pointer: https://cdn.yunyoujun.cn/css/md-cursors/link.cur
   text: https://cdn.yunyoujun.cn/css/md-cursors/text.cur
@@ -443,7 +451,7 @@ footer:
     enable: true
     prefix: 本博客已运行
     suffix: (●'◡'●)
-    start_time: "2023-01-15T00:00:00"
+    start_time: "2022-08-16T15:21:14"
 
   # Display support
   # support:
@@ -466,7 +474,7 @@ post_meta:
 
 # notice pin board
 notice:
-  enable: true
+  enable: false
   content: Thanks for watching my blog.
 
 # third party
