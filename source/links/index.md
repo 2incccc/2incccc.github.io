@@ -18,14 +18,14 @@ links:
     name: fa_555
     blog: fa_555's blog
     desc: 
-    color: '#24264d' # 代表色
+    color: '#4e4665' # 代表色
     email: # 非必须
 
 
 
 
 
-placeholder: 还没想好说些什么 # 默认对友链的描述
+placeholder:      # 默认对友链的描述
 tip: 友链加载中～如失败请刷新重试～
 ---
 >**欢迎在下方评论区以以下格式添加到我的友链~**
