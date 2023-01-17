@@ -686,11 +686,28 @@ github_discussions:
 
 # https://waline.js.org/
 waline:
-  enable: false
-  serverURL: # https://your-domain.vercel.app
+  enable: true
+  serverURL: https://www.zinan2inc.xyz/
   # visitor: false
   # display comment count
-  comment: false
+  comment: true
+  emoji: 
+  - https://unpkg.com/@waline/emojis@1.1.0/bmoji
+  - https://unpkg.com/@waline/emojis@1.1.0/tieba
+  placeholder: 评论时填写邮箱，或者注册并登陆后评论，即可在第一时间收到消息提醒~
+  reaction:
+      - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_agree.png
+      - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_heart_eyes.png
+      - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_antic.png
+      - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_lovely.png
+      - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_yum.png
+      - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_vomit.png
+      - https://unpkg.com/@waline/emojis@1.1.0/tieba/tieba_rage.png
+
+
+
+
+
 
 # http://disqus.com/
 disqus:
@@ -715,7 +732,7 @@ disqusjs:
 
 # https://livere.com/
 livere:
-  enable: true
+  enable: false
   uid: 'MTAyMC81NzEwMS8zMzU2NQ=='
 
 # https://github.com/utterance/utterances
