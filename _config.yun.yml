@@ -17,7 +17,7 @@ colors:
 
 # Favicon
 # ---------------
-favicon: /img/2inc01.png
+favicon: /img/logo_2.png
 
 # ---------------------------------------------------------------
 # Sidebar Settings
@@ -27,7 +27,7 @@ favicon: /img/2inc01.png
 sidebar:
   bg_image: /img/klee.jpg
   # dark_bg_image: https://cdn.yunyoujun.cn/img/bg/dark-alpha-stars-timing-1.webp
-  bg_position: bottom -3rem center
+  bg_position: bottom 0rem center
   tagcloud:
     enable: false
     amount: 20
