@@ -11,11 +11,13 @@ comment: false
 hexo博客搭建极易上手，但是折腾人的地方在于对主题文件的配置以及自定义。出于对美感(~~花里胡哨~~)的追求，至今（2023/1/16）我尝试更换了多种主题`butterfly` `NexT` `Fluid` `Volantis` `Nexmoe` `matery` 等等，最终到现在在用的 `Yun`。
 #### 2023年1月
 >目前该主题配置基本已完成，下一步将尝试搭建可靠的图床方便图片加载（github图床的jsDelivr感觉还是慢，本地图床又太折腾），当然也会慢慢补全先前的笔记文章等，扩充博客内容。此外，由于关于博客部分目前内容尚少，随着时间推移内容扩充后会考虑新建关于站点的超链接并在侧边栏重新渲染。--1/16
-#### ToDo List
+###### ToDo List
 - [x] 更换合适的hexo主题
-- [ ] 基于又拍云搭建图床
+- [ ] 搭建图床
 - [x] 评论系统更新
 - [x] 网站logo 
+---
+
 * 完成`Yun`主题的基本配置   |1/16
 * 由于`LeveRE` 评论系统自带广告，决定更换到waline系统，采用`LeanCloud`作为数据库，`Vercel`用于部署服务端。  |1/17
 * 借助[instantlogodesign](https://instantlogodesign.com/)设计logo,更新网站logo  |1/20
