@@ -13,7 +13,7 @@ links:
     desc: 根本对我兴趣全无啊.
     color: '#c67450' # 代表色
     email: # 非必须
-  - url: fa555.github.io
+  - url: https://fa555.github.io/
     avatar: /img/fa555.jpg
     name: fa_555
     blog: fa_555's blog

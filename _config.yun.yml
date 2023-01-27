@@ -33,11 +33,11 @@ sidebar:
     amount: 20
 
 toc:
-  list_number: false
+  list_number: true
   max_depth: 1000
   min_depth: 1
   placeholder: 很遗憾，咱没写啥目录
-  collapse: false
+  collapse: true
 
 # Social Links.
 social:
