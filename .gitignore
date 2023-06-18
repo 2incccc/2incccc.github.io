@@ -12,3 +12,4 @@ _multiconfig.yml
 .deploy.git*/
 .idea
 themes/butterfly/.git
+.obsidian/
