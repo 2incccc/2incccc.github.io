@@ -299,7 +299,7 @@ vendors:
 # UI
 banner:
   enable: true
-  title: 穿梭時間的畫面的鐘
+  title: 我喜歡，每一朵暮雲
   border: true
   cloud:
     enable: true
@@ -315,13 +315,14 @@ font:
     lib:
       - https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap
   serif:
-    family: "'Songti SC', 'Noto Serif SC', STZhongsong, STKaiti, KaiTi, Roboto, serif"
+    family: '''Songti SC'', ''Noto Serif SC'', STZhongsong, STKaiti, KaiTi, Roboto, serif'
     weight: 900
   sans_serif:
-    family: "Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif"
+    family: '''PingFang SC'', ''Microsoft YaHei'', Roboto, Arial, sans-serif'
     weight: 400
   monospace:
-    family: "'Source Code Pro', Consolas, Monaco, SFMono-Regular, 'Ubuntu Mono', Menlo, monospace"
+    family: '''Source Code Pro'', ''Courier New'', Courier, Consolas, Monaco, monospace'
+
 
 # custom your color in fireworks
 fireworks:
