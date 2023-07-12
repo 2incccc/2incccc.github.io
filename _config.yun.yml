@@ -33,7 +33,7 @@ sidebar:
     amount: 20
 
 toc:
-  list_number: true
+  list_number: false
   max_depth: 1000
   min_depth: 1
   placeholder: 很遗憾，咱没写啥目录
