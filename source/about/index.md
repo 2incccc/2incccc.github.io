@@ -4,9 +4,9 @@ date: 2023-01-15 21:13:40
 toc: false
 ---
 
-![](../img/2inc01.png)
 
 >  *我喜欢，每一朵暮云，每一株绿树*
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*----上海彩虹室内合唱团 《我喜欢》*
 
 
 <p style="font-weight:bold; font-style:italic;">欢迎来到我的博客   Welcome To My Blog</p>
