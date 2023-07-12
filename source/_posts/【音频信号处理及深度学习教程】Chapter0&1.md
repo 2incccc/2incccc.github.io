@@ -6,7 +6,7 @@ categories:
 - 音频信号处理及深度学习教程 
 math: true
 ---
-## 0 课程介绍
+## Chapter 0 课程介绍
 - 课程内容
 	- 音频信号处理
 	- Pytorch 环境介绍

@@ -7,7 +7,7 @@ categories:
 math: true
 ---
 
-## Chaper 2 Pycharm 入门
+## Chapter 2 Pycharm 入门
 ### 相关介绍
 - Anaconda:包管理平台
 - Conda:是环境的管理工具
