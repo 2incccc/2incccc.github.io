@@ -363,7 +363,7 @@ scrollreveal:
 
 bg_image:
   enable: true
-  url: /img/wallhaven-y81k5g_2560x1600.png # recomend image related to your mode
+  url: https://cdn.yunyoujun.cn/img/bg/stars-timing-0-blur-30px.jpg # recomend image related to your mode
   dark: https://cdn.yunyoujun.cn/img/bg/galaxy.jpg
   blur: 30px
   opacity: 1
