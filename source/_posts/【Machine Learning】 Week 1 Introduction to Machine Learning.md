@@ -1,10 +1,10 @@
 ---
 title: 【Machine Learning】 Week 1 Introduction to Machine Learning
 date: 2023-07-15 17:48:16
-tags: [机器学习, 吴恩达]
-categories: - Machine Learning Specialization
+tags: [机器学习,吴恩达]
+categories: 
+- Machine Learning Specialization
 ---
-
 # Week 1    Introduction to Machine Learning
 
 > Welcome to the Machine Learning Specialization! You're joining millions of others who have taken either this or the original course, which led to the founding of Coursera, and has helped millions of other learners, like you, take a look at the exciting world of machine learning!
