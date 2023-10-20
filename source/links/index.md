@@ -13,13 +13,21 @@ links:
     desc: 根本对我兴趣全无啊.
     color: '#c67450' # 代表色
     email: # 非必须
+  - url: http://chenwentao.xyz
+    avatar: /img/cwt.jpg
+    name: Wentao Chen
+    blog: Wentao Chen's Homepage
+    desc: buptyyds
+    color: '#2D4E84' # 代表色
+    email: # 非必须
   - url: https://fa555.github.io/
     avatar: /img/fa555.jpg
     name: fa_555
-    blog: fa_555's blog
+    blog: fa_555's Blog
     desc: 
     color: '#4e4665' # 代表色
     email: # 非必须
+
 
 
 

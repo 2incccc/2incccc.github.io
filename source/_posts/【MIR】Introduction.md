@@ -1,5 +1,5 @@
 ---
-title: 【MIR】Introduction
+title: 【MIR】引言
 date: 2023-07-27 15:45:10
 tags: [音乐信息检索]
 categories:

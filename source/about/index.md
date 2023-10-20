@@ -5,8 +5,8 @@ toc: false
 ---
 
 
->  *我喜欢，每一朵暮云，每一株绿树*
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*----上海彩虹室内合唱团 《我喜欢》*
+>  *既然都忘不掉，不如就装着吧*
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*----上海彩虹室内合唱团 《道别是一件难事》*
 
 
 <p style="font-weight:bold; font-style:italic;">欢迎来到我的博客   Welcome To My Blog</p>
@@ -21,11 +21,9 @@ QQ：2905496995
 邮箱：zinan2inc@163.com
 
 🏫**教育经历**：
-2009-2015：连云港市 |   黄海路小学
-2015-2018：连云港市 |   宋庄中学
+
 2018-2021：连云港市 |   江苏省赣榆高级中学
-2021-至今: 北京市&nbsp;&nbsp;   |   北京邮电大学信息与通信工程学院
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*电子信息工程专业*
+2021-至今: 北京市&nbsp;&nbsp;&nbsp;   |   北京邮电大学信息与通信工程学院*电子信息工程专业*
 
 ---
 
@@ -33,9 +31,22 @@ QQ：2905496995
 
 ***Everything About Music🎵***
 
-自幼学习钢琴，成长过程中培养了许多音乐方面的爱好，包括但不限于钢琴、吉他、作曲、编曲、术力口等等，期待未来认识更多志趣相投的朋友
+*自幼学习钢琴，成长过程中培养了许多音乐方面的爱好，包括但不限于钢琴、吉他、作曲、编曲、术力口等等，期待未来认识更多志趣相投的朋友*
 
-*其余爱好方面属杂食动物，追剧|追番|游戏|阅读|...，基本无忌口*😁
+---
+
+**🏆荣誉奖项：**
+
+北京邮电大学**三好学生**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2022,2023*
+本专科生**国家奖学金**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2022,2023*
+“大唐杯”全国大学生新一代信息通信技术大赛**三等奖**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2023*
+北京市大学生音乐节**最佳表演奖**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2023*
+全国大学生数学竞赛**二等奖**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2022*
+北京市大学生数学竞赛**一等奖**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2022*
+“大唐杯”全国大学生移动通信5G技术大赛**二等奖**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2022*
+全国高中数学联赛三等奖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2020*
+中国化学奥林匹克（初赛）三等奖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2020*
+全国中学生物理竞赛（江苏赛区）三等奖&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*2020*
 
 ---
 
