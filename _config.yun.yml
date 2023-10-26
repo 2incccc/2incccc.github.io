@@ -233,7 +233,7 @@ types:
     color: "#0084FF"
     icon: ri:zhihu-line
 
-# post_card
+# post_cardx`
 post_card:
   opacity: 0.9
 
@@ -311,7 +311,7 @@ banner:
 # You can import the font you want in the head.
 font:
   cdn:
-    enable: true
+    enable: false
     lib:
       - https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&display=swap
   serif:
@@ -439,7 +439,7 @@ footer:
     enable: true
 
   # Beian icp information for Chinese users. In China, every legal website should have a beian icp in website footer.
-  # https://beian.miit.gov.cn/
+  # https://beian.miith.gov.cn/
   beian:
     enable: false
     # icp: 苏ICP备xxxxxxxx号
