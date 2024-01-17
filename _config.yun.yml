@@ -299,7 +299,7 @@ vendors:
 # UI
 banner:
   enable: true
-  title: 我喜歡，每一朵暮雲
+  title: 万籁寂静 再是入梦
   border: true
   cloud:
     enable: true
@@ -308,7 +308,7 @@ banner:
     enable: true
     icon: ri:arrow-down-s-line
 
-# You can import the font you want in the head.
+# You can import the font you want in the head.h
 font:
   cdn:
     enable: false
