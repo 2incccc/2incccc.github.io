@@ -102,7 +102,7 @@ deploy:
   type: 'git'
   repo: 
     # gitee: https://gitee.com/zinan2inc/zinan2inc.git
-    github: https://github.com/2incccc/2incccc.github.io
+    github: git@github.com:2incccc/2incccc.github.io.git
   branch: master
 
 # disqus
