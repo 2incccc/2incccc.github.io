@@ -101,8 +101,8 @@ theme: keep
 deploy:
   type: 'git'
   repo: 
-    gitee: https://gitee.com/zinan2inc/zinan2inc.git
-    github: git@github.com:2incccc/2incccc.github.io.git
+    # gitee: https://gitee.com/zinan2inc/zinan2inc.git
+    github: https://github.com/2incccc/2incccc.github.io
   branch: master
 
 # disqus
