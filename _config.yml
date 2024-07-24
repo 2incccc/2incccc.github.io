@@ -45,10 +45,10 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: false
+  enable: true
 
 prismjs:
-  enable: true
+  enable: false
   preprocess: true
   line_number: false
   tab_replace: ''
@@ -94,7 +94,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yun
+theme: keep 
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
