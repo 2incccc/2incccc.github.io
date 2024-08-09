@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="永远相信美好的事情即将发生">
+    <meta name="author" content="2inc">
+    
+    <title>
+        
+            【音频信号处理及深度学习教程】Chapter 2&amp;3 |
+        
+        Zynestro
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/img/logo_2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/brands.min.css">
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"2incccc.github.io","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#6ed072","title":"Zynestro","author":"2inc","avatar":"/img/微信图片_20240707221033.jpg","logo":"/img/logo_2.png","favicon":"img/logo_2.png"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","photos":"/photos || fa-solid fa-image","about":{"icon":"fa-solid fa-circle-info","children":[{"博主":"/about || fa-solid fa-user"},{"本站":"/site || fa-solid fa-flag"}]}},"first_screen":{"enable":false,"background_img":"/img/wallhaven-3k8656.jpg","background_img_dark":"/img/wallhaven-3k8656.jpg","description":"卒業は終わりじゃない","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/2incccc","weixin":"img |  /img/mmqrcode1721751915317.png","qq":"img | /img/mmqrcode1721751915317.png","weibo":null,"zhihu":"https://www.zhihu.com/people/zinan2inc","twitter":null,"x":null,"facebook":null,"email":"zinan2inc@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://www.zinan2inc.xyz/","reaction":true,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/2incccc/2incccc.github.io"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null,"/js/custom.js"]},"root":"","source_data":{"photos":[{"category":111},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116162654retouch_2023121111232108.jpg"},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116170135K50_20231209_205836715.jpg"},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116174135mmexport1703587844751.jpg"},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116179123mmexport1703587855689.jpg"}]},"version":"4.2.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/img/logo_2.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zynestro
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/photos">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-image"></i>
+                                
+                                相册
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                
+                                关于
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/about">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                                
+                                                博主
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/site">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                                
+                                                本站
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/photos">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-image"></i>
+                                </span>
+                            
+                            相册
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/about">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                            </span>
+                                        
+                                        博主
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/site">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                            </span>
+                                        
+                                        本站
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        【音频信号处理及深度学习教程】Chapter 2&amp;3
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240707221033.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">2inc</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-07-13 00:46:49</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Jul 24 2023 00:04:20 GMT+0800">2023-07-24 00:04:20</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%8F%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/">音频信号处理及深度学习教程</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7/">音频信号</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%A3%B0%E5%AD%A6/">声学</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">信号处理</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.4k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>18 分钟</span>
+            </span>
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="Chapter-2-Pycharm-入门">Chapter 2 Pycharm 入门</h2>
+<h3 id="相关介绍">相关介绍</h3>
+<ul>
+<li>Anaconda:包管理平台</li>
+<li>Conda:是环境的管理工具</li>
+<li>CUDA:Compute Unified Device Architecture,，是一种由 NVIDIA 推出的通用并行计算架构，该架构使 GPU 能够解决复杂的计算问题。</li>
+<li>CUDNN ：是针对深度卷积神经网络的加速库。NVIDIA CUDNN 可以在 GPU 上实现高性能现代并行计算</li>
+</ul>
+<span id="more"></span>
+<ul>
+<li>pip 和 conda 比较：
+<ul>
+<li>依赖项检查<br>
+pip：不一定会展示所需的其他依赖包Conda：列出所需其他依赖包。安装包 时自动安装其依赖项。可以便捷地在包的不同版本中自由切换。</li>
+<li>环境管理<br>
+Conda：在不同环境之间进行切换，环境管理较为简单。</li>
+<li>对系统自带 python 的影响<br>
+pip：在系统自带 python 中包的更新/回退版本/卸载将影响其他程序。Conda：不会影响系统自带 python。</li>
+<li>适用语言<br>
+pip：仅适用于 python。Conda：适用于 python, R, Ruby, Lua, Scala, Java, JavaScript, C/C++, FORTRAN</li>
+</ul>
+</li>
+</ul>
+<h3 id="张量-Tensor">张量 Tensor</h3>
+<p>张量：是一种特殊的数据结构，在 PyTorch 中，神经网络的输入输出都用张量描述</p>
+<h3 id="常用的类-Class">常用的类 Class</h3>
+<p>什么是类 Class？存储对象和函数的集合，调用 Class 中的函数，完成我们需要实现的功能。</p>
+<ul>
+<li>Dataset</li>
+<li>Dataloader</li>
+<li>SummaryWriter</li>
+<li>nn.Module<br>
+上方实例见源码，此处不作赘述</li>
+</ul>
+<h2 id="Chapter-3-构建神经网络">Chapter 3 构建神经网络</h2>
+<h3 id="机器学习介绍">机器学习介绍</h3>
+<ul>
+<li>流程：通过传感器来获得数据、预处理、特征提取、特征选择，最后进行推理、预测或者识别，这就是机器学 习的过程。</li>
+<li>AI &amp; DL &amp; ML：机器学习是人工智能的一个分支，而深度学习又是机器学习的下属分支，因此它们是环环紧扣的<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16889995409501688999540110.png"
+                        alt="16889995409501688999540110.png"
+                 ><br>
+机器如何学习?<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16889995869501688999586642.png"
+                        alt="16889995869501688999586642.png"
+                 ><br>
+概括：准备数据集，先进行人为分析，之后对数据集预处理，再将其分割为 <code>Train set</code> 训练集和 <code>Test set</code> 测试集，根据<strong>训练集</strong>结合相关<strong>算法</strong>，训练出我们需要的<strong>模型</strong>，（核心部分参数调优），最终机器学习到如何根据输入得到想要的输出，完成学习任务，再利用<strong>测试集</strong>对结果进行评价</li>
+</ul>
+<h4 id="如何建设映射关系得到输出？">如何建设映射关系得到输出？</h4>
+<p>通过<strong>正向和反向传播</strong>两个过程，根据大量训练样本，机器学习统计他们之中的规律，从而对未知事件做预测，并且生成模型的输出值与期望值越来越拟合 。</p>
+<ul>
+<li>正向传播：通过模型的每一层运行输入数据以进行<strong>预测</strong>，prediction。</li>
+<li>反向传播：使用模型的预测和已知的标签来<strong>计算误差</strong>（有监督学习），<br>
+然后通过模型反向传播，利用误差导数在梯度下降处得到最小误差来优化模型参数完成学习</li>
+</ul>
+<h4 id="分类和回归是什么。有什么区别？">分类和回归是什么。有什么区别？</h4>
+<p>分类模型和回归模型本质一样，都是要建立映射关系，利用一个训练好的模型将 一组变量作为输入，输出其对应的标签。<br>
+• 分类：<br>
+输出对象是离散变量，并且输出空间不是同一个度量空间。上图是由不 同颜色和标签表示的三个类，每一个小的彩色球体代表一个数据样本。<br>
+• 回归：<br>
+输出对象是连续变量，输出空间是同一个度量空间。下图的函数为这个 映射关系，离散的点为实际值(actual value)，对应到函数上的值为输出值 (predicted value)</p>
+<h3 id="现代机器学习">现代机器学习</h3>
+<p>现代机器学习有一个分支是深度学习</p>
+<ul>
+<li>区别：不需要认为分析数据</li>
+<li>特征：
+<ol>
+<li>深度学习也就是现代机器学习，不需要人为去提取数据特征， 而是通过神经网络自动对数据进行高维抽象学习，其输出的结 果准确率大大提升，并且可以完成很多复杂的任务。</li>
+<li>但是调参工作变得更加繁重。因为引入了更加深、更复杂的网 络模型结构，所以需要定义神经网络模型结构、确认损失函数、 确定优化器，最后就是反复调整模型参数的过程。并且很多模 型是黑盒模型。<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16890001759511689000175235.png"
+                        alt="16890001759511689000175235.png"
+                 ></li>
+</ol>
+</li>
+</ul>
+<h3 id="机器学习的分类">机器学习的分类</h3>
+<h4 id="传统机器学习">传统机器学习</h4>
+<p>人为进行提取数据</p>
+<ul>
+<li>流程：
+<ol>
+<li>数据集准备</li>
+<li>人为分析数据</li>
+<li>数据预处理</li>
+<li>数据分割（训练/测试）</li>
+<li>机器学习算法建模</li>
+<li>选择学习任务，评价成果</li>
+</ol>
+</li>
+<li>常见算法：
+<ul>
+<li>支持向量机</li>
+<li>线性判别分析 LDA</li>
+<li>主成分分析 PCA</li>
+<li>决策树算法</li>
+<li>聚类算法</li>
+<li>玻尔兹曼机（图模型）</li>
+</ul>
+</li>
+</ul>
+<h4 id="现代机器学习-2">现代机器学习</h4>
+<p>机器通过学习生成模型，机器对数据进行提取</p>
+<ul>
+<li>流程
+<ol>
+<li>数据集准备</li>
+<li>数据预处理</li>
+<li>数据分割</li>
+<li>定义神经网络模型</li>
+<li>训练网络</li>
+</ol>
+</li>
+</ul>
+<h3 id="机器学习的其他几种分类">机器学习的其他几种分类</h3>
+<ul>
+<li>有无监督学习区别<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16890005969521689000596702.png"
+                        alt="16890005969521689000596702.png"
+                 ></li>
+</ul>
+<h3 id="神经网络概述">神经网络概述</h3>
+<h4 id="什么是神经网络？">什么是神经网络？</h4>
+<ul>
+<li>流程：
+<ul>
+<li>输入信号乘以权重</li>
+<li>累加输入以及偏移量</li>
+<li>非线性激活，得到输出</li>
+</ul>
+</li>
+<li>结构：
+<ul>
+<li>输入层</li>
+<li>隐藏层</li>
+<li>输出层</li>
+</ul>
+</li>
+</ul>
+<h4 id="如何处理音频的网络？">如何处理音频的网络？</h4>
+<p>因为复杂图形，往往由一些基本结构组成。可以用一组正交的基本结构， 将目标图像按照权重调和而成，音频的语谱图也是如此。<br>
+在音频信号中，在未标注的声音中发现了20种基本的声音结构，因此其 余的声音可以由这20种基本结构合成。这也就是利用图像识别的思路完 成语音识别的基础。<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16890029569511689002956650.png"
+                        alt="16890029569511689002956650.png"
+                 ></p>
+<h4 id="什么是深度学习？">什么是深度学习？</h4>
+<p>具有很多隐藏层的机器学习模型和海量的训练数据，因此可以学习更有用的特征，从而最终提升分类或预测的准 确性。</p>
+<h4 id="感知器">感知器</h4>
+<p>网络神经的最基本单元，包含参数 w 和 b 的激活函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;定义有三个输入的感知元</span></span><br><span class="line"><span class="string"># 1.定义感知元函数，分为线性部分 y=w*x+b 和非线性激活部分sigmoid: y=1/(1+math.exp(-y))</span></span><br><span class="line"><span class="string"># 2.调用该函数，确定输入值与每一个输入对应的权重与偏差值</span></span><br><span class="line"><span class="string"># 3.得到输出</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.定义感知元函数，分为线性部分 y=w*x+b 和非线性激活部分sigmoid: y=1/(1+math.exp(-y))</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">neuron</span>(<span class="params"><span class="built_in">input</span>,weight,bias</span>):</span><br><span class="line">    output = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> x,w <span class="keyword">in</span> <span class="built_in">zip</span>(<span class="built_in">input</span>,weight):</span><br><span class="line">        output += w*x</span><br><span class="line">    output = output + bias</span><br><span class="line">    output = <span class="number">1</span> / (<span class="number">1</span> + math.exp(-output))</span><br><span class="line">    <span class="keyword">return</span> output</span><br><span class="line"><span class="comment"># 2.调用该函数，确定输入值与每一个输入对应的权重与偏差值</span></span><br><span class="line"><span class="built_in">input</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">weight = [<span class="number">0.1</span>,<span class="number">0.4</span>,<span class="number">0.2</span>]</span><br><span class="line">bias = <span class="number">0.02</span></span><br><span class="line"></span><br><span class="line">output = neuron(<span class="built_in">input</span>,weight,bias)</span><br><span class="line"><span class="built_in">print</span>(output)</span><br></pre></td></tr></table></figure>
+<h4 id="浅层学习">浅层学习</h4>
+<p>主要完成识别，分类等基本任务，其最主要的特点是模型简单，包含输<br>
+入层，隐藏层和输出层。（一层隐藏层）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;定义浅层学习网络函数(含两个运算层)</span></span><br><span class="line"><span class="string"># shallow_learning(input,weight1,weight2,bias1,bias2):</span></span><br><span class="line"><span class="string"># 1.定义线性部分output1 = np.sum(input*weight)+bias</span></span><br><span class="line"><span class="string"># 2.定义非线性激活部分output1 = 1 /(1 + np.exp(-output1) )</span></span><br><span class="line"><span class="string"># 3.给定输入与权重系数，得到输出</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ShallowNet</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,weight1,bias1,weight2,bias2</span>):</span><br><span class="line">        self.weight1 = weight1</span><br><span class="line">        self.bias1 = bias1</span><br><span class="line">        self.weight2 = weight2</span><br><span class="line">        self.bias2 = bias2</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">calculate</span>(<span class="params">self,x</span>):</span><br><span class="line">        output = np.dot(x,self.weight1) + self.bias1</span><br><span class="line">        output = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-output)) <span class="comment"># output使用np数组，此处exp需要用np.exp()  </span></span><br><span class="line">        y = np.dot(output,self.weight2) + self.bias2</span><br><span class="line">        y = <span class="number">1</span>  / (<span class="number">1</span> + np.exp(-y))</span><br><span class="line">        <span class="keyword">return</span> y    </span><br><span class="line"><span class="built_in">input</span> = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">weight1 = np.array([[<span class="number">0.1</span>,<span class="number">0.2</span>,<span class="number">0.3</span>,<span class="number">0.4</span>],</span><br><span class="line">                   [<span class="number">0.2</span>,<span class="number">0.3</span>,<span class="number">0.4</span>,<span class="number">0.5</span>],</span><br><span class="line">                   [<span class="number">0.1</span>,<span class="number">0.2</span>,<span class="number">0.4</span>,<span class="number">0.3</span>]])</span><br><span class="line"><span class="comment"># np.array([[],[],[]]) 第一层中括号内每一行再用一个中括号，（也是一个np元素）</span></span><br><span class="line">bias1 = <span class="number">0.01</span></span><br><span class="line">weight2 = np.array([[<span class="number">0.3</span>,<span class="number">0.2</span>,<span class="number">0.1</span>],</span><br><span class="line">                    [<span class="number">0.2</span>,<span class="number">0.1</span>,<span class="number">0.3</span>],</span><br><span class="line">                    [<span class="number">0.5</span>,<span class="number">0.6</span>,<span class="number">0.7</span>],</span><br><span class="line">                    [<span class="number">0.1</span>,<span class="number">0.2</span>,<span class="number">0.3</span>]])</span><br><span class="line">bias2 = <span class="number">0.02</span></span><br><span class="line">mynn = ShallowNet(weight1=weight1,bias1=bias1,weight2=weight2,bias2=bias2)</span><br><span class="line">output = mynn.calculate(<span class="built_in">input</span>)</span><br><span class="line"><span class="built_in">print</span>(output)</span><br></pre></td></tr></table></figure>
+<h4 id="深度学习">深度学习</h4>
+<p>用于特征提取的复杂任务中。其主要特点是通过构建具有很多隐层的机器学习模型和海量的训练数据，来学习更  有用的特征，从而最终提升分类或预测的准确性。（多个隐藏层）</p>
+<ul>
+<li>与浅层学习的比较
+<ul>
+<li>浅层结构算法多用于多数分类、回归等学习方法，其局限性在于有限样本和计算单元情况下对复杂函数的表  示能力有限，针对复杂分类问题其泛化能力受到一定制约。</li>
+<li>深度学习通过学习深层非线性网络结构，实现复杂函数逼近，表征输入数据分布式表示。同时展现了强大的从少数样本集中学习数据集本质特征的能力。<span style="background:#e67575">多层的好处是可以用较少的参数表示复杂的函数。</span></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;定义深度学习网络的类class(无继承型)</span></span><br><span class="line"><span class="string"># 1.初始化网络模型</span></span><br><span class="line"><span class="string"># 根据输入个数,输出个数以及中间层数,定义网络框架</span></span><br><span class="line"><span class="string">layer</span></span><br><span class="line"><span class="string"># layer_innum = [input_num]+hidden_layer+[output_num]</span></span><br><span class="line"><span class="string"># 随机生成weight值,weight个数与每层的输入个数相</span></span><br><span class="line"><span class="string">同</span></span><br><span class="line"><span class="string"># current_weight = np.random.rand(self.layer_innum[i],self.layer_innum[i</span></span><br><span class="line"><span class="string">+1])</span></span><br><span class="line"><span class="string"># 2.模型计算,每一部分实现线性运算np.dot()与非线性</span></span><br><span class="line"><span class="string">激活output1=1 /(1 + np.exp(-output1) )</span></span><br><span class="line"><span class="string"># 3.定义参数调用计算</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DeepNet</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,input_num,output_num,hidden_num</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.model = [input_num] +hidden_num +[output_num]</span><br><span class="line">        <span class="comment"># 最终得到一个列表，列表中每个值代表每一层元素个数</span></span><br><span class="line">        self.weight = []</span><br><span class="line">        self.layer_num = <span class="built_in">len</span>(self.model)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.layer_num-<span class="number">1</span>):</span><br><span class="line">            current_weight = np.random.rand(self.model[i],self.model[i+<span class="number">1</span>]) </span><br><span class="line">            <span class="comment"># 创建给定形状的数组，并使用来自[0,1]的均匀分布的随机样本填充它。</span></span><br><span class="line">            <span class="comment"># 即生成model[i]*model[i+1]个随机数</span></span><br><span class="line">            self.weight.append(current_weight)</span><br><span class="line">            </span><br><span class="line">        self.bias = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">calculate</span>(<span class="params">self,data</span>):</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> self.weight:</span><br><span class="line">            y = np.dot(data,w)</span><br><span class="line">            y = <span class="number">1</span>/(<span class="number">1</span>+np.exp(-y))</span><br><span class="line">            data = y</span><br><span class="line">        <span class="keyword">return</span> y</span><br><span class="line">    </span><br><span class="line">input_num = <span class="number">3</span></span><br><span class="line">output_num = <span class="number">1</span></span><br><span class="line">hidden_num = [<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="构造隐藏层">构造隐藏层</h3>
+<h4 id="卷积层">卷积层</h4>
+<p>利用卷积核（kernel）实现数据的特征提取<br>
+按照一定权重处理输入对象并累加。与信号处理中的卷积有些不同，这里<strong>不存在时间反演</strong>，只是简单的相乘累加。</p>
+<ul>
+<li>
+<p>相关名词<br>
+卷积核/kernel = 滤波器 卷积操作的感受野，直观理解就是一个滤波矩阵，普遍使用的卷积核大小为3×3、5×5等；<br>
+步长/stride = 帧移 卷积核遍历特征图时每步移动的像素，如步长为1则每次移动1个像素<br>
+填充值/padding = padding 处理特征图边界的方式，一般有两种，一种是对边界外完全不填充，只对输入像素执行卷积操作，这样会使输出特征图的尺寸小于输入特征图尺寸；另一种是对边界外进行填充（一般填充为0），再执行卷积操作，这样可使输出特征图的尺寸与输入特征图的尺寸一致；<br>
+注：全 padding 对应输入每一个元素都可以取到*<br>
+扩张值/dilation<br>
+通道/Channel 卷积层的通道数（层数）<br>
+更多了解，见[[各种类型的卷积]]<br>
+![[Pasted image 20230712210744.png]]</p>
+</li>
+<li>
+<p>卷积的类型：</p>
+<ul>
+<li>一维卷积</li>
+<li>二维卷积</li>
+<li>三位卷积</li>
+<li>反卷积（转置）</li>
+</ul>
+</li>
+<li>
+<p>卷积出现的意义：权值共享，用卷积层代替全连接层，参数数量减少，但神经元的个数没有变少，照样可以提取特征值！<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16891668399501689166839315.png"
+                        alt="16891668399501689166839315.png"
+                 ></p>
+</li>
+<li>
+<p>维度计算：卷积后的维度 = （卷积前的维度 - 卷积核边长 + 2 * padding）/ 步长 + 1  （理解上图）</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"># 0.预设环境import torchvision,from torch import  nn</span></span><br><span class="line"><span class="string"># 1.构建卷积模型，继承nn.Module，包含conv2d()</span></span><br><span class="line"><span class="string"># 2.加载图像数据，SummaryWriter写入到log文件中，图像PIL-%3Etensor(transforms.Totensor)</span></span><br><span class="line"><span class="string"># from PIL import Image img = Image.open(img_path)</span></span><br><span class="line"><span class="string"># trans_tensor = torchvision.transforms.ToTensor()</span></span><br><span class="line"><span class="string"># 转换成四维trans_tensor(img).unsqueeze(0)</span></span><br><span class="line"><span class="string"># 3.调用模型计算</span></span><br><span class="line"><span class="string"># 4.得到输出结果，SummaryWriter写入到log文件中</span></span><br><span class="line"><span class="string">tensor-&gt;PIL(transforms.ToPIL)&gt;)</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">from</span> torch.nn <span class="keyword">import</span> Module</span><br><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter</span><br><span class="line"><span class="comment"># input -&gt; (Batch_size,Channels,height,weight) -&gt;(1,1,5,5)</span></span><br><span class="line">img_path = <span class="string">r&quot;/root/..Tutorial/audio_data/boochi.jfif&quot;</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(img_path)</span><br><span class="line">trans_tensor = torchvision.transforms.ToTensor()</span><br><span class="line">img_tensor = trans_tensor(img)</span><br><span class="line"><span class="built_in">print</span>(img_tensor.shape)</span><br><span class="line"><span class="built_in">input</span> = img_tensor.unsqueeze(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 图像数据从三维张量转换为四维张量，可以满足卷积层对输入数据维度的要求。（批操作）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyConv</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.conv = nn.Conv2d(in_channels=<span class="number">3</span>,out_channels=<span class="number">3</span>,kernel_size=<span class="number">2</span>,stride=<span class="number">1</span>,padding=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 卷积后的长宽  = (卷积前的长宽 - 卷积核边长 + 2* padding)/步长 +1</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,data</span>):</span><br><span class="line">        output = self.conv(data)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">file = SummaryWriter(<span class="string">&quot;log_conv&quot;</span>)</span><br><span class="line">mynn = MyConv()</span><br><span class="line">output = mynn(<span class="built_in">input</span>)</span><br><span class="line"><span class="built_in">print</span>(output.shape)</span><br><span class="line">trans_PIL = torchvision.transforms.ToPILImage()</span><br><span class="line">img1 = trans_PIL(output.squeeze(<span class="number">0</span>))</span><br><span class="line">img1.show()</span><br><span class="line">file.add_graph(mynn,<span class="built_in">input</span>)</span><br><span class="line">file.close()</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">总结：</span></span><br><span class="line"><span class="string">mynn(input)中的input是作为参数传递给了forward方法中的data。</span></span><br><span class="line"><span class="string">data是forward方法的参数，用于接收输入数据。</span></span><br><span class="line"><span class="string">input实际上就是被视为data参数的输入数据。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>卷积的结果：改变个像素的数值 RGB 值，（常用于边缘检测、图像锐化、方块模糊等）</li>
+</ul>
+<h4 id="池化层">池化层</h4>
+<p>也叫汇聚层，用于压缩数据和参数的量减小过拟合，将数据尺寸变少，（类比信号处理中的去采样）<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16891735529521689173552490.png"
+                        alt="16891735529521689173552490.png"
+                 ></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;池化的网络模型</span></span><br><span class="line"><span class="string"># 0.预设环境from torch import nn,from PIL import Image</span></span><br><span class="line"><span class="string"># 1.构建池化的网络模型，继承nn.Module，包含MaxPool2d()</span></span><br><span class="line"><span class="string">maxpooling中的stride =  stride if (stride is not None) else kernel_size</span></span><br><span class="line"><span class="string"># 2.加载图像数据，SummaryWriter写入到log文件中，图像PIL-&gt;tensor(transforms.Totensor)</span></span><br><span class="line"><span class="string"># from PIL import Image img = Image.open(img_path)</span></span><br><span class="line"><span class="string"># trans_tensor = torchvision.transforms.ToTensor()</span></span><br><span class="line"><span class="string"># 转换成四维trans_tensor(img).unsqueeze(0)</span></span><br><span class="line"><span class="string"># 3.调用模型计算</span></span><br><span class="line"><span class="string"># 4.得到输出结果，SummaryWriter写入到log文件中，tensor-&gt;PIL(transforms.ToPIL)</span></span><br><span class="line"><span class="string"># tensorboard --logdir=D:\WZY\Class\Pytorch_Audio\Chapter3\log_pooling --port=1000</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> torchvision.transforms</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter</span><br><span class="line"></span><br><span class="line">img_path = <span class="string">r&quot;E:\Code\audio_data\mob.jpg&quot;</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(img_path)</span><br><span class="line">trans_tensor = torchvision.transforms.ToTensor()</span><br><span class="line">img_tensor = trans_tensor(img)</span><br><span class="line"><span class="built_in">print</span>(img_tensor.shape)</span><br><span class="line"><span class="comment"># 1.构建池化的网络模型，继承nn.Module，包含MaxPool2d()</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyPooling</span>(nn.Module):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.pooling1 = nn.MaxPool2d(kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>,ceil_mode=<span class="literal">False</span>)</span><br><span class="line">        <span class="comment"># MaxPool 最大池化</span></span><br><span class="line">        self.pooling2 = nn.AvgPool2d(kernel_size=<span class="number">2</span>,stride=<span class="number">2</span>,ceil_mode=<span class="literal">False</span>)</span><br><span class="line">        <span class="comment"># AvgPool 平均池化</span></span><br><span class="line">        <span class="comment"># 维度与池化方式没有关系，二者区别：MaxPool取最大特征值作为特征后结果，方便突出特征，AvgPool计算特征值平均后作为特征后结果，使图像更平滑</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,data</span>):</span><br><span class="line">        output = self.pooling2(data)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">file = SummaryWriter(<span class="string">&quot;log_network&quot;</span>)</span><br><span class="line"><span class="comment"># 3.调用模型计算</span></span><br><span class="line">mynn = MyPooling()</span><br><span class="line"><span class="built_in">input</span> = img_tensor.unsqueeze(<span class="number">0</span>)</span><br><span class="line">output = mynn(<span class="built_in">input</span>)</span><br><span class="line"><span class="built_in">print</span>(output.shape)</span><br><span class="line">file.add_image(<span class="string">&quot;Image&quot;</span>,img_tensor)</span><br><span class="line">file.add_image(<span class="string">&quot;Pooling&quot;</span>,output.squeeze(<span class="number">0</span>))</span><br><span class="line">file.close()</span><br><span class="line">trans_PIL = torchvision.transforms.ToPILImage()</span><br><span class="line">img1 = trans_PIL(output.squeeze(<span class="number">0</span>))</span><br><span class="line">img1.show()</span><br></pre></td></tr></table></figure>
+<h4 id="非线性层">非线性层</h4>
+<p>非线性激活，形成复杂的函数</p>
+<ul>
+<li>
+<p>ReLU（Rectified Linear Unit，修正线性单元）   $ReLU = max(x,0)$  <code>nn.ReLU()</code><br>
+优点：解决梯度消失，计算速度快<br>
+缺点：没有输出负数，（值域有限）一些神经元不会被激活</p>
+</li>
+<li>
+<p>Tanh  $Tanhx = \frac{e^x-e^{-x}}{e^x+e^{-x}}$  <code>nn.Tanh()</code><br>
+优点：输出正负，解决了 zero-centered 的输出问题<br>
+缺点：梯度消失和幂运算的问题依然存在</p>
+</li>
+<li>
+<p>Sigmoid $\sigma(x) = \frac{1}{1+e^{-x}}$  <code>nn.Sigmoid()</code><br>
+输出恒大于 0，会导致模型训练的收敛速度变慢</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;非线性激活ReLU的网络模型</span></span><br><span class="line"><span class="string"># 0.预设环境from torch import nn,from PIL import Image</span></span><br><span class="line"><span class="string"># 1.构建池化的网络模型，继承nn.Module，包含ReLU()</span></span><br><span class="line"><span class="string"># 2.加载图像数据，SummaryWriter写入到log文件中，图像PIL-&gt;tensor(transforms.Totensor)</span></span><br><span class="line"><span class="string"># from PIL import Image img = Image.open(img_path)</span></span><br><span class="line"><span class="string"># trans_tensor = torchvision.transforms.ToTensor()</span></span><br><span class="line"><span class="string"># 转换成四维trans_tensor(img).unsqueeze(0)</span></span><br><span class="line"><span class="string"># 3.调用模型计算</span></span><br><span class="line"><span class="string"># 4.得到输出结果，SummaryWriter写入到log文件中，tensor-&gt;PIL(transforms.ToPIL)</span></span><br><span class="line"><span class="string"># tensorboard --logdir=D:\WZY\Class\Pytorch_Audio\Chapter3\log_pooling --port=1000</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> torchvision.transforms</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line">img_path = <span class="string">r&quot;/root/..Tutorial/audio_data/boochi.jpg.jfif&quot;</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(img_path)</span><br><span class="line">img.show()</span><br><span class="line">trans_tensor = torchvision.transforms.ToTensor()</span><br><span class="line">img_tensor = trans_tensor(img)</span><br><span class="line"><span class="built_in">print</span>(img_tensor.shape)</span><br><span class="line"><span class="comment"># 1.构建非线性的网络模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Nonliner</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.nonliner1 = nn.ReLU()</span><br><span class="line">        self.nonliner2 = nn.Tanh()</span><br><span class="line">        self.nonliner3 = nn.Sigmoid()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,data</span>):</span><br><span class="line">        output = self.nonliner3(data)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"><span class="comment"># 3.调用模型计算</span></span><br><span class="line">mynn = Nonliner()</span><br><span class="line"><span class="built_in">input</span> = img_tensor.unsqueeze(<span class="number">0</span>)</span><br><span class="line">output = mynn(<span class="built_in">input</span>)</span><br><span class="line"><span class="built_in">print</span>(output.shape)</span><br><span class="line"></span><br><span class="line">trans_PIL = torchvision.transforms.ToPILImage()</span><br><span class="line">img1 = trans_PIL(output.squeeze(<span class="number">0</span>))</span><br><span class="line">img1.show()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;bias = <span class="subst">&#123;(img_tensor - output.squeeze(<span class="number">0</span>)).<span class="built_in">sum</span>()&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># 衡量偏差</span></span><br></pre></td></tr></table></figure>
+<h4 id="线性层">线性层</h4>
+<blockquote>
+<p>线性拟合 y = xA^T + b（二维）将输出的最后维度变小，通过线性拟合，变成一维啦</p>
+</blockquote>
+<p>具体而言，线性层将输入向量（或批量输入）映射到另一个向量（或批量输出），其中每个输出元素与输入元素的线性组合相关联。也就是所谓全连接层（FC）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 其余部分同上</span></span><br><span class="line"><span class="comment">## ...</span></span><br><span class="line">self.liner = nn.Linear(in_features=<span class="number">1920</span>,ou_features=<span class="number">20</span>)</span><br><span class="line"><span class="comment">## ...</span></span><br></pre></td></tr></table></figure>
+<h4 id="整体网络构建">整体网络构建</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn <span class="comment">## nn:Neural Networks 神经网络</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.utils.tensorboard <span class="keyword">import</span> SummaryWriter <span class="comment">## 写入文件</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">myNetwork</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.model = nn.Sequential(nn.Conv2d(<span class="number">3</span>,<span class="number">32</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>),nn.MaxPool2d(<span class="number">2</span>),</span><br><span class="line">                                   nn.Conv2d(<span class="number">32</span>,<span class="number">32</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>),nn.MaxPool2d(<span class="number">2</span>),</span><br><span class="line">                                   nn.Conv2d(<span class="number">32</span>,<span class="number">64</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>),nn.MaxPool2d(<span class="number">2</span>),</span><br><span class="line">                                   nn.Flatten(),nn.Linear(<span class="number">64</span>*<span class="number">4</span>*<span class="number">4</span>,<span class="number">64</span>),nn.Linear(<span class="number">64</span>,<span class="number">10</span>))</span><br><span class="line">        <span class="comment"># 定义隐藏层，根据神经网络结构，设计卷积层、线性层、池化层、非线性层等等</span></span><br><span class="line">        <span class="comment"># 注意flatten不是严格意义上的隐藏层，他实际上是一种数据操作</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,data</span>): <span class="comment"># 代表网络的前向船体</span></span><br><span class="line">        output = self.model(data)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    mynn = myNetwork()</span><br><span class="line">    <span class="built_in">input</span> = torch.Tensor(<span class="number">1</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">    output = mynn(<span class="built_in">input</span>)</span><br><span class="line">    <span class="built_in">print</span>(output.shape)</span><br><span class="line">    file = SummaryWriter(<span class="string">&quot;log_nn&quot;</span>)</span><br><span class="line">    file.add_graph(model=mynn,input_to_model=<span class="built_in">input</span>)</span><br><span class="line">    file.close()</span><br></pre></td></tr></table></figure>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                【音频信号处理及深度学习教程】Chapter 2&amp;3
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2023/07/13/【音频信号处理及深度学习教程】Chapter2&amp;3/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">2inc</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2023-07-13 00:46</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7/">音频信号</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%A3%B0%E5%AD%A6/">声学</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">信号处理</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/07/15/%E3%80%90%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%8F%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B%E3%80%91Chapter%204%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83/"
+                                   title="【深度学习教程】Chapter 4 神经网络训练"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【深度学习教程】Chapter 4 神经网络训练</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/06/25/%E3%80%90%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%8F%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B%E3%80%91Chapter0&1/"
+                                   title="【音频信号处理及深度学习教程】Chapter 0&amp;1"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【音频信号处理及深度学习教程】Chapter 0&amp;1</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://www.zinan2inc.xyz/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2-Pycharm-%E5%85%A5%E9%97%A8"><span class="nav-text">Chapter 2 Pycharm 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D"><span class="nav-text">相关介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%A0%E9%87%8F-Tensor"><span class="nav-text">张量 Tensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B1%BB-Class"><span class="nav-text">常用的类 Class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-%E6%9E%84%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-text">Chapter 3 构建神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%8B%E7%BB%8D"><span class="nav-text">机器学习介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E8%AE%BE%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%E5%BE%97%E5%88%B0%E8%BE%93%E5%87%BA%EF%BC%9F"><span class="nav-text">如何建设映射关系得到输出？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E5%92%8C%E5%9B%9E%E5%BD%92%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">分类和回归是什么。有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-text">现代机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">机器学习的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-text">传统机器学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-2"><span class="nav-text">现代机器学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%85%B6%E4%BB%96%E5%87%A0%E7%A7%8D%E5%88%86%E7%B1%BB"><span class="nav-text">机器学习的其他几种分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="nav-text">神经网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%9F"><span class="nav-text">什么是神经网络？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%9F%B3%E9%A2%91%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%9F"><span class="nav-text">如何处理音频的网络？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%9F"><span class="nav-text">什么是深度学习？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8"><span class="nav-text">感知器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%85%E5%B1%82%E5%AD%A6%E4%B9%A0"><span class="nav-text">浅层学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="nav-text">深度学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E9%9A%90%E8%97%8F%E5%B1%82"><span class="nav-text">构造隐藏层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%A0%E5%8C%96%E5%B1%82"><span class="nav-text">池化层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%B1%82"><span class="nav-text">非线性层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%B1%82"><span class="nav-text">线性层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E7%BD%91%E7%BB%9C%E6%9E%84%E5%BB%BA"><span class="nav-text">整体网络构建</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">2inc</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/2incccc/2incccc.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">52.1k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2-Pycharm-%E5%85%A5%E9%97%A8"><span class="nav-text">Chapter 2 Pycharm 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D"><span class="nav-text">相关介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%A0%E9%87%8F-Tensor"><span class="nav-text">张量 Tensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%B1%BB-Class"><span class="nav-text">常用的类 Class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-3-%E6%9E%84%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="nav-text">Chapter 3 构建神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%8B%E7%BB%8D"><span class="nav-text">机器学习介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E8%AE%BE%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB%E5%BE%97%E5%88%B0%E8%BE%93%E5%87%BA%EF%BC%9F"><span class="nav-text">如何建设映射关系得到输出？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E5%92%8C%E5%9B%9E%E5%BD%92%E6%98%AF%E4%BB%80%E4%B9%88%E3%80%82%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">分类和回归是什么。有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-text">现代机器学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-text">机器学习的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-text">传统机器学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%B0%E4%BB%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-2"><span class="nav-text">现代机器学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%85%B6%E4%BB%96%E5%87%A0%E7%A7%8D%E5%88%86%E7%B1%BB"><span class="nav-text">机器学习的其他几种分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A6%82%E8%BF%B0"><span class="nav-text">神经网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%9F"><span class="nav-text">什么是神经网络？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E9%9F%B3%E9%A2%91%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%9F"><span class="nav-text">如何处理音频的网络？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%9F"><span class="nav-text">什么是深度学习？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%84%9F%E7%9F%A5%E5%99%A8"><span class="nav-text">感知器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%85%E5%B1%82%E5%AD%A6%E4%B9%A0"><span class="nav-text">浅层学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="nav-text">深度学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E9%9A%90%E8%97%8F%E5%B1%82"><span class="nav-text">构造隐藏层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="nav-text">卷积层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%A0%E5%8C%96%E5%B1%82"><span class="nav-text">池化层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%B1%82"><span class="nav-text">非线性层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%B1%82"><span class="nav-text">线性层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E7%BD%91%E7%BB%9C%E6%9E%84%E5%BB%BA"><span class="nav-text">整体网络构建</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+        
+            
+<script class="custom-inject-js" src="/js/custom.js" data-pjax></script>
+
+        
+    
+
+</body>
+</html>

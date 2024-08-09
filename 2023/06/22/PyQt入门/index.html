@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="永远相信美好的事情即将发生">
+    <meta name="author" content="2inc">
+    
+    <title>
+        
+            PyQt入门 |
+        
+        Zynestro
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/img/logo_2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/font/css/brands.min.css">
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"2incccc.github.io","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#6ed072","title":"Zynestro","author":"2inc","avatar":"/img/微信图片_20240707221033.jpg","logo":"/img/logo_2.png","favicon":"img/logo_2.png"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","photos":"/photos || fa-solid fa-image","about":{"icon":"fa-solid fa-circle-info","children":[{"博主":"/about || fa-solid fa-user"},{"本站":"/site || fa-solid fa-flag"}]}},"first_screen":{"enable":false,"background_img":"/img/wallhaven-3k8656.jpg","background_img_dark":"/img/wallhaven-3k8656.jpg","description":"卒業は終わりじゃない","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/2incccc","weixin":"img |  /img/mmqrcode1721751915317.png","qq":"img | /img/mmqrcode1721751915317.png","weibo":null,"zhihu":"https://www.zhihu.com/people/zinan2inc","twitter":null,"x":null,"facebook":null,"email":"zinan2inc@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://www.zinan2inc.xyz/","reaction":true,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/2incccc/2incccc.github.io"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null,"/js/custom.js"]},"root":"","source_data":{"photos":[{"category":111},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116162654retouch_2023121111232108.jpg"},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116170135K50_20231209_205836715.jpg"},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116174135mmexport1703587844751.jpg"},{"url":"https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/1723116179123mmexport1703587855689.jpg"}]},"version":"4.2.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/img/logo_2.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zynestro
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/photos">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-image"></i>
+                                
+                                相册
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                
+                                关于
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/about">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                                
+                                                博主
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/site">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                                
+                                                本站
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/photos">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-image"></i>
+                                </span>
+                            
+                            相册
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/about">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                            </span>
+                                        
+                                        博主
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/site">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                            </span>
+                                        
+                                        本站
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        PyQt入门
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240707221033.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">2inc</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-06-22 02:12:52</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Jul 24 2023 00:04:20 GMT+0800">2023-07-24 00:04:20</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%AC%94%E8%AE%B0%E7%95%99%E6%A1%A3/">笔记留档</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Python/">Python</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.8k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>8 分钟</span>
+            </span>
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="PyQt-简介">PyQt 简介</h2>
+<p>包括以下模块：QtCore  QtGui  QtWidgets  QtDBus  QtNetwork  QtHelp  QtXml  QtSvg  Qtsqll QtTest</p>
+<hr>
+<h2 id="PyQt6日期与时间">PyQt6日期与时间</h2>
+<p><code>QDate QTime QDateTime</code>  分别处理公历日期 时间 和组合</p>
+<p>PyQt6 有 <code>currentDate</code>、<code>currentTime</code> 和 <code>currentDateTime</code> 方法获取当前的日期或时间。</p>
+<p>…</p>
+<hr>
+<h2 id="PyQt6的第一个程序">PyQt6的第一个程序</h2>
+<h4 id="简单示例">简单示例</h4>
+<span id="more"></span>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication, QWidget</span><br><span class="line"><span class="comment">## 导入必要的包</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    <span class="comment">## 当我们把sys.argv 传给QApplication 时，我们是把命令行参数传给Qt。这使得我们可以在应用程序启动时将任何配置设置传递给Qt。</span></span><br><span class="line">    w = QWidget()</span><br><span class="line">    w.resize(<span class="number">250</span>, <span class="number">200</span>)</span><br><span class="line">    <span class="comment">## 改变大小</span></span><br><span class="line">    w.move(<span class="number">300</span>, <span class="number">300</span>)</span><br><span class="line">    <span class="comment">## 移动位置</span></span><br><span class="line"></span><br><span class="line">    w.setWindowTitle(<span class="string">&#x27;Simple&#x27;</span>)</span><br><span class="line">    <span class="comment">## 设置标题</span></span><br><span class="line"></span><br><span class="line">    w.show()</span><br><span class="line">    <span class="comment">##显示一个部件的步骤是首先在内存里创建，然后在屏幕上显示。</span></span><br><span class="line"></span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line">    <span class="comment">## sys.exit 方法确保一个干净的退出。环境将被告知应用程序如何结束。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="气泡-QToolTip">气泡 QToolTip</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># file: tooltip.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This example shows a tooltip on</span></span><br><span class="line"><span class="string">a window and a button.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> (QWidget, QToolTip,</span><br><span class="line">    QPushButton, QApplication)</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtGui <span class="keyword">import</span> QFont</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__() <span class="comment">## 调用父类的</span></span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        QToolTip.setFont(QFont(<span class="string">&#x27;SansSerif&#x27;</span>, <span class="number">10</span>))</span><br><span class="line">        <span class="comment">## 这个静态方法给气泡提示框设置了字体，这里使用了10pt 的 SansSerif 字体。</span></span><br><span class="line">        </span><br><span class="line">        self.setToolTip(<span class="string">&#x27;This is a &lt;i&gt;QWidget&lt;/i&gt; widget&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        btn = QPushButton(<span class="string">&#x27;Button&#x27;</span>, self)</span><br><span class="line">        btn.setToolTip(<span class="string">&#x27;This is a &lt;b&gt;QPushButton&lt;/b&gt; widget&#x27;</span>)</span><br><span class="line">        <span class="comment">## 在气泡提示框上添加了一个按钮部件。</span></span><br><span class="line">        </span><br><span class="line">        btn.resize(btn.sizeHint())</span><br><span class="line">        btn.move(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line">        <span class="comment">## sizeHint 方法是给按钮一个系统建议的尺寸，然后使用 move 方法移动这个按钮的位置。</span></span><br><span class="line">        </span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Tooltips&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="退出按钮">退出按钮</h4>
+<p>参数 text 是将显示在按钮上的文本。parent 是我们放置按钮的小部件。在我们的例子中，它将是一个QWidget。<strong>应用程序的小部件形成层次结构</strong>，在这个层次结构中，大多数小部件都有父级。没有父级的小部件的父级是顶级窗口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># file: quit_button.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This program creates a quit</span></span><br><span class="line"><span class="string">button. When we press the button,</span></span><br><span class="line"><span class="string">the application terminates.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QPushButton, QApplication</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        qbtn = QPushButton(<span class="string">&#x27;Quit&#x27;</span>, self)</span><br><span class="line">        <span class="comment">## 我们创建了一个按钮，它是 QPushButton 类的一个实例。构造函数的第一个参数是按钮的标签。 第二个参数是父级小部件。父小部件是 Example 小部件，它继承自 QWidget。</span></span><br><span class="line"></span><br><span class="line">        qbtn.clicked.connect(QApplication.instance().quit)</span><br><span class="line">        <span class="comment">## PyQt6 的事件处理系统是由信号和插槽机制构成的，点击按钮（事件），会发出点击信号。事件处理插槽可以是 Qt 自带的插槽，也可以是普通 Python 函数</span></span><br><span class="line">        <span class="comment">## 使用 QApplication.instance 获取的 QCoreApplication 对象包含主事件循环————它处理和分派所有事件。 单击的信号连接到终止应用程序的退出方法。 通信是在两个对象之间完成的：发送者和接收者。 发送者是按钮，接收者是应用程序对象。</span></span><br><span class="line">        qbtn.resize(qbtn.sizeHint())</span><br><span class="line">        qbtn.move(<span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">250</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Quit button&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="弹窗">弹窗</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># file: messagebox.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This program shows a confirmation</span></span><br><span class="line"><span class="string">message box when we click on the close</span></span><br><span class="line"><span class="string">button of the application window.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QMessageBox, QApplication</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">200</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Message box&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">closeEvent</span>(<span class="params">self, event</span>):</span><br><span class="line"></span><br><span class="line">        reply = QMessageBox.question(self, <span class="string">&#x27;Message&#x27;</span>,</span><br><span class="line">                    <span class="string">&quot;Are you sure to quit?&quot;</span>, QMessageBox.StandardButton.Yes |</span><br><span class="line">                    QMessageBox.StandardButton.No, QMessageBox.StandardButton.No)</span><br><span class="line">                    <span class="comment">## 这里创建了一个带有两个按钮的消息框：是和否。第一个参数是标题栏，第二个参数是对话框显示的消息文本，第三个参数是对话框中的按钮组合，最后一个参数是默认选中的按钮。返回值存储在变量 reply 中。</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> reply == QMessageBox.StandardButton.Yes:</span><br><span class="line"></span><br><span class="line">            event.accept()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">            event.ignore()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="窗口居中">窗口居中</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># file: center.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This program centers a window</span></span><br><span class="line"><span class="string">on the screen.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QWidget, QApplication</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        self.resize(<span class="number">350</span>, <span class="number">250</span>)</span><br><span class="line">        self.center()</span><br><span class="line"></span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Center&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">center</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        qr = self.frameGeometry()</span><br><span class="line">        <span class="comment">## 这样就可以得到一个矩形的窗口，这里可以放置所有类型的窗口。</span></span><br><span class="line">        cp = self.screen().availableGeometry().center()</span><br><span class="line">        <span class="comment">## 从屏幕属性里计算出分辨率，然后计算出中心点位置。</span></span><br><span class="line"></span><br><span class="line">        qr.moveCenter(cp)</span><br><span class="line">        self.move(qr.topLeft())</span><br><span class="line">        <span class="comment">## 我们已经知道矩形窗口的宽高，只需要把矩形窗口的中心点放置到屏幕窗口的中心点即可。这不会修改矩形窗口的大小。</span></span><br><span class="line">        <span class="comment">## 把应用窗口的左上方点坐标移动到矩形窗口的左上方，这样就可以居中显示了。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="PyQt6的菜单和工具栏">PyQt6的菜单和工具栏</h2>
+<p>在这部分教程中，我们创建了一个状态栏、菜单栏和工具栏。菜单是位于菜单栏中的一组命令。工具栏有一些按钮和应用程序中的一些常用命令。状态栏显示状态信息，通常位于应用程序窗口的底部。</p>
+<h3 id="QMainWindow">QMainWindow</h3>
+<p><code>QMainWindow</code>类提供了主程序窗口。在这里可以创建一个具有状态栏、工具栏和菜单栏的经典应用程序框架。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># file: statusbar.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">ZetCode PyQt6 tutorial</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">This program creates a statusbar.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Author: Jan Bodnar</span></span><br><span class="line"><span class="string">Website: zetcode.com</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QMainWindow, QApplication</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Example</span>(<span class="title class_ inherited__">QMainWindow</span>):</span><br><span class="line">    <span class="comment">## 在这里可以创建一个具有状态栏、工具栏和菜单栏的经典应用程序框架。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        self.initUI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">initUI</span>(<span class="params">self</span>):</span><br><span class="line"></span><br><span class="line">        self.statusBar().showMessage(<span class="string">&#x27;Ready&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        self.setGeometry(<span class="number">300</span>, <span class="number">300</span>, <span class="number">350</span>, <span class="number">250</span>)</span><br><span class="line">        self.setWindowTitle(<span class="string">&#x27;Statusbar&#x27;</span>)</span><br><span class="line">        self.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    ex = Example()</span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>课程来源： Python GUI Development with PyQt6 &amp; Qt Designer</p>
+</blockquote>
+<ul>
+<li>
+<p>PyQt Introduction</p>
+</li>
+<li>
+<p>PyQt6 Installation and First GUI Window</p>
+</li>
+<li>
+<p>Window Class Types<br>
+三种窗口类</p>
+<ul>
+<li>QMainWindow：包括工具栏、菜单栏、状态栏等</li>
+<li>QDialog: 对话窗口类</li>
+<li>QWidget：所有用户界面对象的基类</li>
+</ul>
+</li>
+<li>
+<p>Adding Icon &amp; Title to PyQT6 Window</p>
+</li>
+<li>
+<p>Introduction to Qt Designer</p>
+</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16825910403231682591039550.png"
+                        alt=""
+                 ></p>
+<ul>
+<li>Convert UI File to PY</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyuic6 -x windowUI.ui -o windowUI.py</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Loading UI</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6 <span class="keyword">import</span> uic</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>
+<p>Working with QLabel<br>
+用于显示文字、图像</p>
+</li>
+<li>
+<p>Working with QPyshButton</p>
+</li>
+<li>
+<p>QVBoxLayout&amp;QHBoxLayout</p>
+</li>
+<li>
+<p>QGridLayout 网格布局，用于对齐不见<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16825972503241682597249498.png"
+                        alt=""
+                 ></p>
+</li>
+<li>
+<p>Event Handling<br>
+事件处理机制叫做信号和槽<br>
+每个小部件在应用任何事件时（如点击clicked 滑动等）可以发出信号，需要槽连接该信号和方法（method）<br>
+很多部件（如按键等）有内置信号，如btn.clicked 通过btn.clicked.connect(self.clicked_btn) （括号内为槽）相连接起来。</p>
+</li>
+<li>
+<p>Event Handling with Qt Designer</p>
+</li>
+</ul>
+<hr>
+<h4 id="Simple-Calculator-with-Qt-Designer">Simple Calculator with Qt Designer</h4>
+<p>步骤：</p>
+<ol>
+<li>确定对象，修改对象命名、属性等</li>
+<li>排布对象布局</li>
+<li>生成ui文件，并转为py文件</li>
+<li>在py文件中编写事件函数（信号、槽）</li>
+</ol>
+<hr>
+<ul>
+<li>Working with QRadioButton<br>
+单选按钮，一次只能选中一个</li>
+<li>Working with QChexbox<br>
+复选框</li>
+<li>Creating QSpinBox<br>
+上下调整的框框以修改值<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16832000343061683200033667.png"
+                        alt=""
+                 ></li>
+<li>Creating QDoubleSpinBox</li>
+</ul>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                PyQt入门
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2023/06/22/PyQt入门/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">2inc</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2023-06-22 02:12</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Python/">Python</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/06/25/%E3%80%90%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%8F%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B%E3%80%91Chapter0&1/"
+                                   title="【音频信号处理及深度学习教程】Chapter 0&amp;1"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【音频信号处理及深度学习教程】Chapter 0&amp;1</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/06/22/%E3%80%90%E5%8F%B6%E5%9F%B9%E5%A4%A7%E3%80%91%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E7%A7%91%E7%A0%94%E5%86%99%E4%BD%9C/"
+                                   title="【叶培大】人工智能与科研写作"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【叶培大】人工智能与科研写作</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://www.zinan2inc.xyz/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt-%E7%AE%80%E4%BB%8B"><span class="nav-text">PyQt 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6%E6%97%A5%E6%9C%9F%E4%B8%8E%E6%97%B6%E9%97%B4"><span class="nav-text">PyQt6日期与时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-text">PyQt6的第一个程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="nav-text">简单示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B0%94%E6%B3%A1-QToolTip"><span class="nav-text">气泡 QToolTip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E6%8C%89%E9%92%AE"><span class="nav-text">退出按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%B9%E7%AA%97"><span class="nav-text">弹窗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%B1%85%E4%B8%AD"><span class="nav-text">窗口居中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6%E7%9A%84%E8%8F%9C%E5%8D%95%E5%92%8C%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="nav-text">PyQt6的菜单和工具栏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#QMainWindow"><span class="nav-text">QMainWindow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Simple-Calculator-with-Qt-Designer"><span class="nav-text">Simple Calculator with Qt Designer</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">2inc</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/2incccc/2incccc.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">52.1k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt-%E7%AE%80%E4%BB%8B"><span class="nav-text">PyQt 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6%E6%97%A5%E6%9C%9F%E4%B8%8E%E6%97%B6%E9%97%B4"><span class="nav-text">PyQt6日期与时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F"><span class="nav-text">PyQt6的第一个程序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="nav-text">简单示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B0%94%E6%B3%A1-QToolTip"><span class="nav-text">气泡 QToolTip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E6%8C%89%E9%92%AE"><span class="nav-text">退出按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%B9%E7%AA%97"><span class="nav-text">弹窗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%B1%85%E4%B8%AD"><span class="nav-text">窗口居中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt6%E7%9A%84%E8%8F%9C%E5%8D%95%E5%92%8C%E5%B7%A5%E5%85%B7%E6%A0%8F"><span class="nav-text">PyQt6的菜单和工具栏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#QMainWindow"><span class="nav-text">QMainWindow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Simple-Calculator-with-Qt-Designer"><span class="nav-text">Simple Calculator with Qt Designer</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/lazyload.min.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.1/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+        
+            
+<script class="custom-inject-js" src="/js/custom.js" data-pjax></script>
+
+        
+    
+
+</body>
+</html>
