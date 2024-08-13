@@ -4,9 +4,32 @@
   
     
     <entry>
+      <title>Datawhale AI 夏令营 多媒体大模型数据合成 Task 1</title>
+      <link href="/2024/08/13/Datawhale%20AI%20%E5%A4%8F%E4%BB%A4%E8%90%A5%20%E5%A4%9A%E5%AA%92%E4%BD%93%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%20Task%201/"/>
+      <url>/2024/08/13/Datawhale%20AI%20%E5%A4%8F%E4%BB%A4%E8%90%A5%20%E5%A4%9A%E5%AA%92%E4%BD%93%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%20Task%201/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="赛事介绍">赛事介绍</h3><p><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17235437820281723543781914.png"                        alt="17235437820281723543781914.png"                 ></p><blockquote><p>在当下大数据、大模型时代，大数据是驱动大模型的能源。当前大模型的训练数据绝大部分来源于互联网上的信息，但随着大模型尺寸与性能逐渐提升，互联网上的海量数据也将逐渐使用殆尽，并且对于多模态大模型来说，这些海量资源在获取后，也需要极大的额外处理和人力标注才可以达到可用于训练大模型的水准。因此，如何借助已有的强大的大模型，在有限的计算资源下为新的模型训练流程高效合成优质的训练数据成为了一个新兴的值得关注的问题。“天池 Better Synth - 多模态大模型数据合成挑战赛”正是在这样的背景下产生，该比赛旨在鼓励参赛者探究合成数据对于多模态大模型训练的影响，以及促使参赛者追求高效的数据合成方法与策略，共同推进多模态大模型数据合成从 0-1 以及从 1-100 的前沿创新探索。</p></blockquote><ul><li>背景：当今时代，训练大模型对训练数据的要求越来越高，互联网上的数据难以满足更多要求，如何合成新的数据成为一个新的值得关注的问题。</li><li>任务描述：基于提供的种子数据集，进行一系列<strong>数据合成与清洗</strong>，得到更高质量、更多样性的新的数据集</li><li>评测方式：利用主办方提供的<strong>开发套件</strong>，在新的数据集进行同样框架及参数设置的训练，对比数据导致的性能差异</li><li>相关技术：<ul><li>Data-Juicer: 是一个集成了数据分析和可视化工具的一站式大模型数据处理系统，参赛者使用 data-juicer 来辅助数据分析、筛选和生成</li><li>Mini-Gemini 一个轻量级多模态模型，详见 <a class="link"   href="https://github.com/dvlab-research/MGM?tab=readme-ov-file" >Gemini<i class="fas fa-external-link-alt"></i></a></li></ul></li></ul><h3 id="实验环境准备">实验环境准备</h3><blockquote><p>以下内容主要基于 Datawhale 提供的入门文档，详见从零入门<a class="link"   href="https://datawhaler.feishu.cn/wiki/MRIhw663ViJMv3k81X5cMp0VnQd" >多模态大模型数据合成<i class="fas fa-external-link-alt"></i></a></p></blockquote><h4 id="设备选择">设备选择</h4><p>由于本赛事需要大量算力，这里使用 AutoDL 平台租用计算资源。具体不作赘述。<br>需要注意的是，Datawhale 提供了该赛事对应的环境镜像，省去了相关开发套件及 conda 环境的配置，所以需按照教程选择一致的设备配置，具体见下图。<br><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17235565304191723556530313.png"                        alt="17235565304191723556530313.png|400"                 ></p><h4 id="环境配置">环境配置</h4><p>完成租用实例后，我们开机操作终端完成后续的配置操作。（这里不涉及模型训练及推理本身，建议使用无卡模式开机）。<br>之后操作均在终端中实现，具体代码及解释如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装必要工具</span></span><br><span class="line">apt update</span><br><span class="line">apt install axel zip file</span><br><span class="line">pip install modelscope</span><br><span class="line"></span><br><span class="line"><span class="comment">## 下载模型及数据集</span></span><br><span class="line"><span class="built_in">cd</span> better_synth_baseline_autoDL <span class="comment">#进入对应目录</span></span><br><span class="line">bash download.sh <span class="comment"># 下载操作已经写在该文件内，执行即可</span></span><br><span class="line">python download_blip.py <span class="comment">#下载blip模型</span></span><br></pre></td></tr></table></figure><p>以上过程大概总共花费半小时左右，至此环境配置完成，下面是实验内容的开始，包括数据处理及模型训练推理。</p><h3 id="实验内容">实验内容</h3><h4 id="数据处理和合成">数据处理和合成</h4><p>完成环境配置后，切换开机模式至有卡模式，开始前确认配置没问题并进入对应文件路径，运行如下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dj-process --config solution/image_captioning.yaml</span><br></pre></td></tr></table></figure><h4 id="模型训练和推理测评">模型训练和推理测评</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> toolkit/training</span><br><span class="line">pip install -e .</span><br><span class="line">pip install flash-attn --no-build-isolation <span class="comment"># 安装 flash-attn 包，该包通常用于高效的注意力机制计算。</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> better_synth_baseline_autoDL/toolkit </span><br><span class="line">git <span class="built_in">clone</span> https://github.com/modelscope/data-juicer.git <span class="comment"># 安装data-juicer？</span></span><br><span class="line">bash train_mgm_2b_stage_1.sh </span><br></pre></td></tr></table></figure><h4 id="问题出现">问题出现</h4><p>在模型推理过程中，出现报错信息</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OSError: /root/autodl-tmp/better_synth_challenge_baseline/toolkit/eval/../../output/training_dirs/MGM-2B-Finetune-default does not appear to have a file named config.json.</span><br></pre></td></tr></table></figure><p>根据文档内容描述，主要由于显卡/内存不够，按照文档说明修改了模型训练推理的脚本，并且扩容了数据盘后，但是没有效果。目前问题还未解决。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Datawhale </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> 多媒体 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>预备知识及音程</title>
-      <link href="/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B/"/>
-      <url>/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B/</url>
+      <link href="/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B%20copy/"/>
+      <url>/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B%20copy/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="乐音体系">乐音体系</h3><ul><li>基本音级：C D E F G A B</li><li>音组：大字、小字<br><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219171855501721917185252.png"                        alt="17219171855501721917185252.png"                 ></li><li>钢琴的音域：$A_2-c^5$</li></ul><h3 id="音律">音律</h3><ul><li>五度相生律/十二平均律/纯律<ul><li>五度相生律：适用单音乐器</li><li>十二平均律：转调方便，键盘乐器</li><li>纯律：适用多声部音乐。和弦音同时结合时纯正而和谐</li><li><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219176825471721917682053.png"                        alt="17219176825471721917682053.png"                 ></li></ul></li><li>自然/变化 半音/全音： <code>自然</code> .意味着两个相邻基本音级，其余都为变化…</li></ul><h3 id="五线谱记谱法">五线谱记谱法</h3><ul><li>谱号<ul><li>G 谱号，代表 $g^1$，G 谱号记在的线，即螺旋围绕的线，表示 $g^1$，G 谱号记在二线是俗称的高音谱表，</li><li>F 谱号，代表 $f$, F 谱号记在的线，即两个点夹着的线，表示 $f$，F 谱号记在四线是通常所说的低音谱表</li><li>C 谱号，表示 $c^1$，C 谱号记在的线，即两个须须夹着的线，后面同上。</li></ul></li></ul><h3 id="节奏节拍">节奏节拍</h3><ul><li>拍号的读法：先读分母后读分子</li></ul><h3 id="速度">速度</h3><ul><li>基本速度用语：<ul><li>Grave 庄板</li><li>Largo 广板</li><li>Lento 慢板</li><li>Adagio 柔板</li><li>Larghetto 小广板</li><li>Andante 行板</li><li>Andantino 小行板</li><li>Moderato 中板</li><li>Allegretto 小快板</li><li>Allegro 快板</li><li>Vivace 急快板</li><li>Presto 急板</li><li>Prestissimo 最急板</li></ul></li><li>2.变化速度用语：<ul><li>ratardando 缩写 rit.渐慢</li><li>rallentando 缩写 rall,渐慢</li><li>ritenuto 缩写 riten.转慢</li><li>piu lento 更慢</li><li>piùmosso 转快</li><li>Accelerando 缩写 accel…渐快</li><li>stringendo 缩写 string.渐快</li><li>allargando 缩写 allarg.渐慢渐强</li><li>Smorzando 渐慢渐弱</li><li>a tempo 原速</li><li>tempo rubato 速度自由</li><li>l’istesso tempo 同速</li></ul></li></ul><h3 id="音程">音程</h3><ul><li>名称与标记<ul><li>音程的名称由度数和音数共同确定</li><li>度数：五线谱上包括的线和间的数目（包括本身），只说明音程是几度没有其他问题，<strong>确定名称中的度数</strong></li><li>音数：音程包含的全音、半音的数目，用 1 和 1/2 表示，<strong>确定音程名称中的大、小、增、减、纯</strong></li><li>具体方便记忆见[[音程名称]]<ul><li><strong>1458 是完全，2367 是大</strong></li><li>然后按大调算数，<strong>减-完全-增；减-小-大-增</strong></li></ul></li></ul></li><li>自然音程与变化音程：除去增、减四五度的其余增减/重增减音程</li><li>度数相同而音数不同的各种音程的相互关系<ul><li><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219218035451721921802811.png"                        alt="17219218035451721921802811.png"                 ></li></ul></li><li>音程的转位<ul><li><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219233955471721923394564.png"                        alt="17219233955471721923394564.png"                 ></li></ul></li></ul>]]></content>
       
@@ -32,8 +55,8 @@
     
     <entry>
       <title>预备知识及音程</title>
-      <link href="/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B%20copy/"/>
-      <url>/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B%20copy/</url>
+      <link href="/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B/"/>
+      <url>/2024/07/26/%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E5%8F%8A%E9%9F%B3%E7%A8%8B/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="乐音体系">乐音体系</h3><ul><li>基本音级：C D E F G A B</li><li>音组：大字、小字<br><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219171855501721917185252.png"                        alt="17219171855501721917185252.png"                 ></li><li>钢琴的音域：$A_2-c^5$</li></ul><h3 id="音律">音律</h3><ul><li>五度相生律/十二平均律/纯律<ul><li>五度相生律：适用单音乐器</li><li>十二平均律：转调方便，键盘乐器</li><li>纯律：适用多声部音乐。和弦音同时结合时纯正而和谐</li><li><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219176825471721917682053.png"                        alt="17219176825471721917682053.png"                 ></li></ul></li><li>自然/变化 半音/全音： <code>自然</code> .意味着两个相邻基本音级，其余都为变化…</li></ul><h3 id="五线谱记谱法">五线谱记谱法</h3><ul><li>谱号<ul><li>G 谱号，代表 $g^1$，G 谱号记在的线，即螺旋围绕的线，表示 $g^1$，G 谱号记在二线是俗称的高音谱表，</li><li>F 谱号，代表 $f$, F 谱号记在的线，即两个点夹着的线，表示 $f$，F 谱号记在四线是通常所说的低音谱表</li><li>C 谱号，表示 $c^1$，C 谱号记在的线，即两个须须夹着的线，后面同上。</li></ul></li></ul><h3 id="节奏节拍">节奏节拍</h3><ul><li>拍号的读法：先读分母后读分子</li></ul><h3 id="速度">速度</h3><ul><li>基本速度用语：<ul><li>Grave 庄板</li><li>Largo 广板</li><li>Lento 慢板</li><li>Adagio 柔板</li><li>Larghetto 小广板</li><li>Andante 行板</li><li>Andantino 小行板</li><li>Moderato 中板</li><li>Allegretto 小快板</li><li>Allegro 快板</li><li>Vivace 急快板</li><li>Presto 急板</li><li>Prestissimo 最急板</li></ul></li><li>2.变化速度用语：<ul><li>ratardando 缩写 rit.渐慢</li><li>rallentando 缩写 rall,渐慢</li><li>ritenuto 缩写 riten.转慢</li><li>piu lento 更慢</li><li>piùmosso 转快</li><li>Accelerando 缩写 accel…渐快</li><li>stringendo 缩写 string.渐快</li><li>allargando 缩写 allarg.渐慢渐强</li><li>Smorzando 渐慢渐弱</li><li>a tempo 原速</li><li>tempo rubato 速度自由</li><li>l’istesso tempo 同速</li></ul></li></ul><h3 id="音程">音程</h3><ul><li>名称与标记<ul><li>音程的名称由度数和音数共同确定</li><li>度数：五线谱上包括的线和间的数目（包括本身），只说明音程是几度没有其他问题，<strong>确定名称中的度数</strong></li><li>音数：音程包含的全音、半音的数目，用 1 和 1/2 表示，<strong>确定音程名称中的大、小、增、减、纯</strong></li><li>具体方便记忆见[[音程名称]]<ul><li><strong>1458 是完全，2367 是大</strong></li><li>然后按大调算数，<strong>减-完全-增；减-小-大-增</strong></li></ul></li></ul></li><li>自然音程与变化音程：除去增、减四五度的其余增减/重增减音程</li><li>度数相同而音数不同的各种音程的相互关系<ul><li><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219218035451721921802811.png"                        alt="17219218035451721921802811.png"                 ></li></ul></li><li>音程的转位<ul><li><img                         lazyload                       alt="image"                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/17219233955471721923394564.png"                        alt="17219233955471721923394564.png"                 ></li></ul></li></ul>]]></content>
       
@@ -120,9 +143,9 @@
       
         <tags>
             
-            <tag> 论文 </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> 论文 </tag>
             
             <tag> Dance Generation </tag>
             
@@ -576,11 +599,11 @@
       
         <tags>
             
-            <tag> 笔记 </tag>
-            
             <tag> Python </tag>
             
             <tag> 前端 </tag>
+            
+            <tag> 笔记 </tag>
             
         </tags>
       
