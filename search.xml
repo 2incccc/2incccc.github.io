@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>数据结构知识点复习</title>
+      <link href="/2024/11/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0/"/>
+      <url>/2024/11/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>以下内容主要面向保研复试，只包括少部分内容，（图、树），后续会继续补充</p></blockquote><h2 id="数据结构">数据结构</h2><h3 id="绪论及基本概念">绪论及基本概念</h3><ul><li>数据结构包含三部分<ul><li>逻辑结构：从逻辑关系描述<ul><li>线性<ul><li>线性表</li><li>数组</li></ul></li><li>非线性<ul><li>树</li><li>图</li><li>集合</li></ul></li></ul></li><li>存储结构（物理结构），在计算机中的关系<ul><li>顺序存储</li><li>链式存储</li><li>索引存储</li><li>散列存储</li></ul></li><li>运算</li></ul></li></ul><h3 id="树">树</h3><ul><li>基本概念：度、层数、深度，二叉树，什么什么的</li><li>二叉树的性质：有个奇怪的 n0=n2+1，经过推导的</li><li>基本操作<ul><li>树的遍历：前序、中序（二叉树）、后序、层序（广度）</li><li>树/森林和二叉树的转化</li></ul></li><li>树的存储结构<ul><li>双亲表示：<code>T data; int parent</code></li><li>孩子表示：</li><li>双亲孩子表示</li><li>孩子兄弟表示</li></ul></li><li>二叉树的存储结构<ul><li>data，左右孩子</li><li>二叉列表/三叉列表</li></ul></li><li>二叉树的实现（基于二叉链表）</li><li>哈夫曼树和哈夫曼编码</li><li></li></ul><h3 id="图">图</h3><ul><li>图的相关概念<ul><li>（）表示一条边，&lt;&gt;表示一个弧</li><li>完全有向/无向 指所有顶点都连上的</li><li>VG 分别是顶点和边</li><li>带权的图叫 网</li><li>连通图，任何顶点间都存在路径，对应还有连通分量，是指无向图中的极大连通子图</li><li>强连通图，对应有向图中的概念</li></ul></li><li>图的存储结构<ul><li>顺序存储结构：邻接矩阵</li><li>链式存储结构：邻接表</li><li>十字链表</li><li>边集数组</li></ul></li><li>图的操作<ul><li>深度优先遍历，广度优先遍历</li></ul></li><li>最小生成树：要走遍所有顶点的<ul><li>两种算法：Prim 和 Kurskal</li></ul></li><li>最短路径：固定两个顶点<ul><li>两个算法：Dijkstra 和 Floyd</li><li>D 算法<ul><li>研究特定顶点到其他顶点，每个点的最短路径</li><li>初始化一个数组，存储每个点到特定顶点的距离</li><li>将所有顶点划分为已确定和没确定的点，已确定的 距离在数组内 定下来</li><li>每次确定一个新的点，以该点相邻的点判断是否更新最短路径</li></ul></li></ul></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 保研 </tag>
+            
+            <tag> 总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Datawhale AI 夏令营 多媒体大模型数据合成 Task 1</title>
       <link href="/2024/08/13/Datawhale%20AI%20%E5%A4%8F%E4%BB%A4%E8%90%A5%20%E5%A4%9A%E5%AA%92%E4%BD%93%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%20Task%201/"/>
       <url>/2024/08/13/Datawhale%20AI%20%E5%A4%8F%E4%BB%A4%E8%90%A5%20%E5%A4%9A%E5%AA%92%E4%BD%93%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%20Task%201/</url>

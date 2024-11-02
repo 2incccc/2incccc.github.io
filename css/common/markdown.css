@@ -380,13 +380,13 @@ keep-tablet()
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-keep-mobile()
 }
 .keep-markdown-body > .table-container table td,
 .keep-markdown-body > .post > .table-container table td,
 .keep-markdown-body > .table-container table th,
 .keep-markdown-body > .post > .table-container table th {
   padding: 0;
+  white-space: nowrap;
 }
 .keep-markdown-body > .table-container table td,
 .keep-markdown-body > .post > .table-container table td {
