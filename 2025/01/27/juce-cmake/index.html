@@ -9,7 +9,7 @@
     
     <title>
         
-            juce+cmake |
+            如何使用CMake构建JUCE项目（不使用Projucer） |
         
         Zynestro
     </title>
@@ -373,7 +373,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        juce+cmake
+                        如何使用CMake构建JUCE项目（不使用Projucer）
                     </div>
                 
 
@@ -404,19 +404,44 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Jan 27 2025 15:37:06 GMT+0800">2025-01-27 15:37:06</span>
+                <span class="datetime" data-updated="Mon Jan 27 2025 15:54:36 GMT+0800">2025-01-27 15:54:36</span>
             </span>
         
 
         
-
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/juce%E5%BC%80%E5%8F%91/">juce开发</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/juce/">juce</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/cmake/">cmake</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>660 字</span>
+            </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -434,7 +459,53 @@
                     
 
                     
-                         
+                         <blockquote>
+<p>最近对VST开发比较感兴趣，发现了JUCE框架，但是JUCE提供的 Projucer 大多配合 Xcode 使用，本人更习惯使用VS Code，又了解到 Projucer 其实只是相当于 CMake 构建项目的 GUI 界面，所以在下面介绍一种VS Code 可以使用的 JUCE 项目构建方法。</p>
+</blockquote>
+<p>JUCE 是一个流行的 C++ 框架，广泛用于音频和 GUI 应用的开发。通常，JUCE 提供的 <strong>Projucer</strong> 可用于生成工程文件，但如果你希望使用 <strong>CMake</strong> 直接构建 JUCE 项目，那么本文将指导你如何完成这一过程。</p>
+<h2 id="1-环境准备"><strong>1. 环境准备</strong></h2>
+<p>在开始之前，请确保你的开发环境满足以下条件：</p>
+<ul>
+<li><strong>JUCE 库</strong>：已下载并解压 <a class="link"   target="_blank" rel="noopener" href="https://github.com/juce-framework/JUCE" >JUCE 源码<i class="fas fa-external-link-alt"></i></a></li>
+<li><strong>CMake</strong>：已安装 CMake（推荐 3.15 及以上版本）</li>
+<li><strong>编译工具链</strong>：例如 GCC、Clang，或 Windows 上的 Visual Studio 编译工具</li>
+</ul>
+<h2 id="2-创建-CMakeLists-txt"><strong>2. 创建 CMakeLists.txt</strong></h2>
+<p>在你的 JUCE 项目根目录下，创建 <code>CMakeLists.txt</code> 文件，并填入以下内容：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定 CMake 版本</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.15</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义项目名称</span></span><br><span class="line"><span class="keyword">project</span>(MyJUCEApp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 JUCE 库路径（修改为你的 JUCE 目录）</span></span><br><span class="line"><span class="keyword">set</span>(JUCE_DIR /path/to/juce)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 引入 JUCE</span></span><br><span class="line"><span class="keyword">add_subdirectory</span>(<span class="variable">$&#123;JUCE_DIR&#125;</span> JUCE)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义可执行文件</span></span><br><span class="line"><span class="keyword">add_executable</span>(MyJUCEApp</span><br><span class="line">    Source/Main.cpp</span><br><span class="line">    Source/MainComponent.cpp</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 链接 JUCE 库</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(MyJUCEApp PRIVATE juce::juce_gui_basics juce::juce_audio_basics)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 C++ 标准</span></span><br><span class="line"><span class="keyword">set_target_properties</span>(MyJUCEApp PROPERTIES CXX_STANDARD <span class="number">17</span>)</span><br></pre></td></tr></table></figure>
+<p>:::info<br>
+⚠️ <strong>注意</strong>：</p>
+<ul>
+<li><strong>修改 <code>JUCE_DIR</code></strong>：请替换 <code>/path/to/juce</code> 为你的实际 JUCE 路径。</li>
+<li><strong>添加更多 JUCE 模块</strong>：如果你的项目需要更多模块，可以在 <code>target_link_libraries</code> 里添加，例如 <code>juce::juce_audio_processors</code>。<br>
+:::</li>
+</ul>
+<h2 id="3-配置和编译项目"><strong>3. 配置和编译项目</strong></h2>
+<p>接下来，按照以下步骤编译项目：</p>
+<h3 id="1️⃣-创建构建目录"><strong>1️⃣ 创建构建目录</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br></pre></td></tr></table></figure>
+<h3 id="2️⃣-运行-CMake-配置"><strong>2️⃣ 运行 CMake 配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake ..</span><br></pre></td></tr></table></figure>
+<h3 id="3️⃣-编译项目"><strong>3️⃣ 编译项目</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake --build .</span><br></pre></td></tr></table></figure>
+<p>如果一切顺利，你的可执行文件将被生成在 <code>build</code> 目录中。</p>
+<h2 id="4-运行程序"><strong>4. 运行程序</strong></h2>
+<p>编译完成后，你可以直接运行生成的可执行文件，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./MyJUCEApp</span><br></pre></td></tr></table></figure>
+<p>在 Windows 上，你可以双击 <code>MyJUCEApp.exe</code> 或使用命令行运行。</p>
+<h2 id="5-其他配置"><strong>5. 其他配置</strong></h2>
+<h3 id="1️⃣-JUCE-模块选择"><strong>1️⃣ JUCE 模块选择</strong></h3>
+<p>根据你的需求，添加适当的 JUCE 模块，例如：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_link_libraries</span>(MyJUCEApp PRIVATE juce::juce_gui_basics juce::juce_audio_processors)</span><br></pre></td></tr></table></figure>
+<h3 id="2️⃣-平台特定设置"><strong>2️⃣ 平台特定设置</strong></h3>
+<p>如果你的项目需要在多个平台上运行，可以添加不同的配置：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(WIN32)</span><br><span class="line">    <span class="comment"># Windows-specific settings</span></span><br><span class="line"><span class="keyword">elseif</span>(APPLE)</span><br><span class="line">    <span class="comment"># macOS-specific settings</span></span><br><span class="line"><span class="keyword">elseif</span>(UNIX)</span><br><span class="line">    <span class="comment"># Linux-specific settings</span></span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
+<h3 id="3️⃣-包含自定义模块"><strong>3️⃣ 包含自定义模块</strong></h3>
+<p>如果你有自己的模块，可以使用 <code>add_subdirectory</code> 或 <code>include_directories</code> 进行添加。</p>
+<h2 id="总结"><strong>总结</strong></h2>
+<p>本文介绍了如何使用 CMake 构建 JUCE 项目，完全绕过 Projucer，并展示了如何配置 CMakeLists.txt 以及执行编译。</p>
+<p>如果你在构建过程中遇到问题，欢迎留言讨论！</p>
+
                     
                 </div>
 
@@ -444,7 +515,7 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                juce+cmake
+                如何使用CMake构建JUCE项目（不使用Projucer）
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
@@ -496,6 +567,18 @@
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/juce/">juce</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/cmake/">cmake</a>
+                                    </li>
+                                
+                            </ul>
                         
                     </div>
                     <div>
@@ -622,7 +705,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-text">1. 环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA-CMakeLists-txt"><span class="nav-text">2. 创建 CMakeLists.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE%E5%92%8C%E7%BC%96%E8%AF%91%E9%A1%B9%E7%9B%AE"><span class="nav-text">3. 配置和编译项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%B8%8F%E2%83%A3-%E5%88%9B%E5%BB%BA%E6%9E%84%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="nav-text">1️⃣ 创建构建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%B8%8F%E2%83%A3-%E8%BF%90%E8%A1%8C-CMake-%E9%85%8D%E7%BD%AE"><span class="nav-text">2️⃣ 运行 CMake 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%EF%B8%8F%E2%83%A3-%E7%BC%96%E8%AF%91%E9%A1%B9%E7%9B%AE"><span class="nav-text">3️⃣ 编译项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-text">4. 运行程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="nav-text">5. 其他配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%B8%8F%E2%83%A3-JUCE-%E6%A8%A1%E5%9D%97%E9%80%89%E6%8B%A9"><span class="nav-text">1️⃣ JUCE 模块选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%B8%8F%E2%83%A3-%E5%B9%B3%E5%8F%B0%E7%89%B9%E5%AE%9A%E8%AE%BE%E7%BD%AE"><span class="nav-text">2️⃣ 平台特定设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%EF%B8%8F%E2%83%A3-%E5%8C%85%E5%90%AB%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97"><span class="nav-text">3️⃣ 包含自定义模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
     </div>
 </div>
 
@@ -668,7 +751,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">26k</span>
+                    <span class="item-value border-box word">26.7k</span>
                 </span>
             
 
@@ -786,7 +869,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-text">1. 环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA-CMakeLists-txt"><span class="nav-text">2. 创建 CMakeLists.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE%E5%92%8C%E7%BC%96%E8%AF%91%E9%A1%B9%E7%9B%AE"><span class="nav-text">3. 配置和编译项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%B8%8F%E2%83%A3-%E5%88%9B%E5%BB%BA%E6%9E%84%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="nav-text">1️⃣ 创建构建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%B8%8F%E2%83%A3-%E8%BF%90%E8%A1%8C-CMake-%E9%85%8D%E7%BD%AE"><span class="nav-text">2️⃣ 运行 CMake 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%EF%B8%8F%E2%83%A3-%E7%BC%96%E8%AF%91%E9%A1%B9%E7%9B%AE"><span class="nav-text">3️⃣ 编译项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-text">4. 运行程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="nav-text">5. 其他配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%B8%8F%E2%83%A3-JUCE-%E6%A8%A1%E5%9D%97%E9%80%89%E6%8B%A9"><span class="nav-text">1️⃣ JUCE 模块选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%B8%8F%E2%83%A3-%E5%B9%B3%E5%8F%B0%E7%89%B9%E5%AE%9A%E8%AE%BE%E7%BD%AE"><span class="nav-text">2️⃣ 平台特定设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%EF%B8%8F%E2%83%A3-%E5%8C%85%E5%90%AB%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97"><span class="nav-text">3️⃣ 包含自定义模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
     </div>
 </div>
 
