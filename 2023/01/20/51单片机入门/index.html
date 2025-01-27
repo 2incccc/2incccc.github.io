@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="永远相信美好的事情即将发生">
+    <meta name="author" content="2inc">
+    
+    <title>
+        
+            51单片机入门 |
+        
+        Zynestro
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/img/logo_2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/brands.min.css">
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"2incccc.github.io","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#6ed072","title":"Zynestro","author":"2inc","avatar":"/img/微信图片_20240707221033.jpg","logo":"/img/logo_2.png","favicon":"img/logo_2.png"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","photos":"/photos || fa-solid fa-image","about":{"icon":"fa-solid fa-circle-info","children":[{"Me":"/about || fa-solid fa-user"},{"Site":"/site || fa-solid fa-flag"}]}},"first_screen":{"enable":false,"background_img":"/img/wallhaven-3k8656.jpg","background_img_dark":"/img/wallhaven-3k8656.jpg","description":"卒業は終わりじゃない","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/2incccc","weixin":"img |  /img/mmqrcode1721751915317.png","qq":"img | /img/mmqrcode1721751915317.png","weibo":null,"zhihu":"https://www.zhihu.com/people/zinan2inc","twitter":null,"x":null,"facebook":null,"email":"zinan2inc@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://www.zinan2inc.xyz/","reaction":true,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/2incccc/2incccc.github.io"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null,"/js/custom.js"]},"root":"","source_data":{},"version":"4.2.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/img/logo_2.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zynestro
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/photos">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-image"></i>
+                                
+                                相册
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                
+                                关于
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/about">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                                
+                                                ME
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/site">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                                
+                                                SITE
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/photos">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-image"></i>
+                                </span>
+                            
+                            相册
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/about">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                            </span>
+                                        
+                                        ME
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/site">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                            </span>
+                                        
+                                        SITE
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        51单片机入门
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240707221033.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">2inc</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-01-20 11:18:17</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Jan 27 2025 15:36:53 GMT+0800">2025-01-27 15:36:53</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%94%B5%E8%B5%9B/">电赛</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Keil/">Keil</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.1k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>8 分钟</span>
+            </span>
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <blockquote>
+<p>课程来源：江科大自化协</p>
+</blockquote>
+<h3 id="1-单片机及开发板介绍">1 单片机及开发板介绍</h3>
+<h4 id="单片机">单片机</h4>
+<ul>
+<li>Micro Controller Unit 简称 MCU</li>
+<li>内部集成 CPU RAM ROM 定时器 终端系统 通讯接口等一系列常用硬件功能</li>
+<li>单片机的任务：信息采集、处理和硬件设备的控制</li>
+<li>学习使用单片机是了解计算机原理与结构的最佳选择</li>
+</ul>
+<h4 id="STC89C52-单片机">STC89C52 单片机</h4>
+<span id="more"></span>
+<ul>
+<li>所属系列：51 单片机系列</li>
+<li>公司：STC 公司</li>
+<li>位数：8 位</li>
+<li>RAM：512 字节</li>
+<li>ROM：8K</li>
+<li>工作频率：12MHz</li>
+<li>是对所有兼容 Intel 8031 指令系统的单片机的统称</li>
+</ul>
+<h4 id="命名规则">命名规则</h4>
+<p>工作电压、程序空间 RAM 大小、工作频率、温度范围、封装类型、管脚数</p>
+<hr>
+<h3 id="2-LED">2 LED</h3>
+<ul>
+<li>2-1 LED 点亮</li>
+<li>2-2 LED 闪烁</li>
+<li>2-3 LED 流水灯<br>
+ </li>
+<li>延时代码</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Delay500ms</span><span class="params">()</span><span class="comment">//@12.000MHz</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> i, j, k;</span><br><span class="line"></span><br><span class="line">    _nop_();</span><br><span class="line">    i = <span class="number">4</span>;</span><br><span class="line">    j = <span class="number">205</span>;</span><br><span class="line">    k = <span class="number">187</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (--k);</span><br><span class="line">        &#125; <span class="keyword">while</span> (--j);</span><br><span class="line">    &#125; <span class="keyword">while</span> (--i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-按键开关">3 按键开关</h3>
+<h4 id="3-1-独立按键控制-LED-亮灭">3-1 独立按键控制 LED 亮灭</h4>
+<ul>
+<li>轻触按键：按下开关接通、松开开关断开，原理：金属弹片受力弹动</li>
+<li>根据原理图，按下按键对应值为 0；</li>
+</ul>
+<h6 id="C51-数据运算">C51 数据运算</h6>
+<ul>
+<li>算术：+,  -, *, /, %, =</li>
+<li>判断： &gt;, &gt;=, &lt;, &lt;=, ==, !=</li>
+<li>逻辑:
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或</td>
+</tr>
+<tr>
+<td>!</td>
+<td>逻辑非</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>位运算
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;&lt;</td>
+<td>按位左移</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>按位右移</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或</td>
+</tr>
+<tr>
+<td>~</td>
+<td>按位去反</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h6 id="C51-基本语句">C51 基本语句</h6>
+<p><code>if</code> <code>for</code> <code>while</code> <code>switch</code></p>
+<h4 id="3-2-按键控制-LED-状态">3-2 按键控制 LED 状态</h4>
+<h6 id="按键抖动">按键抖动</h6>
+<p>在开关闭合及断开的瞬间会伴随一连串的抖动</p>
+<h6 id="消抖">消抖</h6>
+<ul>
+<li>硬件消抖：
+<ol>
+<li>RS 触发器</li>
+<li>电容器</li>
+</ol>
+</li>
+<li>软件消抖
+<ol>
+<li>延时函数<br>
+优点：简单方便<br>
+缺点：程序空跑浪费 CPU 资源</li>
+</ol>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@12.000MHz-1ms 延时函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Delay</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> xms)</span>&#123;<span class="comment">//延时1ms</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> i, j;</span><br><span class="line">    <span class="keyword">while</span>(xms--)&#123;</span><br><span class="line">        i = <span class="number">2</span>;</span><br><span class="line">        j = <span class="number">239</span>;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (--j);</span><br><span class="line">            &#125; <span class="keyword">while</span> (--i);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//消抖函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">debounce</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(PXin(x)==KEY_PRESS)  <span class="comment">//代表按下按键</span></span><br><span class="line">    Delay(<span class="number">10</span>);  <span class="comment">//刚按下时出现抖动，延时10ms</span></span><br><span class="line">    <span class="keyword">while</span>(PXin(x)==KEY_PRESS);  <span class="comment">//按键闭合，不做处理</span></span><br><span class="line">    Delay(<span class="number">10</span>);  <span class="comment">//按键弹起出现抖动，延时10ms</span></span><br><span class="line">    <span class="comment">/*按键处理*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-数码管">4 数码管</h3>
+<h4 id="4-1-静态数码管显示">4-1 静态数码管显示</h4>
+<h6 id="数码管介绍">数码管介绍</h6>
+<ul>
+<li>动态数码管模块原理图<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16740367577201674036757125.png"
+                        alt=""
+                 ></li>
+<li>74HC138(U5):<br>
+三线-八线译码器，详见数电课本</li>
+<li>74HC245(U4)：
+<ul>
+<li>作用：双向数据缓冲器，将数据由 AX 传至 BX</li>
+<li>原因：单片机驱动能力弱，将驱动改为控制信号，使 LED 数码管的驱动能力来源 VCC</li>
+</ul>
+</li>
+<li>RP3&amp;4 100R
+<ul>
+<li>100 欧姆排阻</li>
+<li>作用：分流</li>
+</ul>
+</li>
+<li>应用原理
+<ol>
+<li>74HC138 译码器，输入三位 421 二进制数，输出结果作为<em>位码</em></li>
+<li>74HC245，八位输入作为<em>段码</em></li>
+</ol>
+</li>
+</ul>
+<h6 id="C51-数组">C51 数组</h6>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x[<span class="number">3</span>];   <span class="comment">//定义一组变量</span></span><br><span class="line"><span class="type">int</span> x[]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;    <span class="comment">//定义一组变量并初始化</span></span><br></pre></td></tr></table></figure>
+<h6 id="C51-子函数">C51 子函数</h6>
+<p>将完成某一功能的程序代码单独抽取出来形成一个模块，在其他函数中可随时调用此模块，以达到代码的复用和优化程序结构的目的。</p>
+<h6 id="数码管段码表">数码管段码表</h6>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">uchar code table［］=&#123;</span><br><span class="line">    <span class="comment">/*共阳极，位选高电平有效，段选低电平有效*/</span></span><br><span class="line">    <span class="number">0xc0</span>，<span class="comment">//0</span></span><br><span class="line">    <span class="number">0xf9</span>，<span class="comment">//1</span></span><br><span class="line">    <span class="number">0xa4</span>，<span class="comment">//2</span></span><br><span class="line">    <span class="number">0xb0</span>，<span class="comment">//3</span></span><br><span class="line">    <span class="number">0x99</span>，<span class="comment">//4</span></span><br><span class="line">    <span class="number">0x92</span>，<span class="comment">//5</span></span><br><span class="line">    <span class="number">0x82</span>，<span class="comment">//6</span></span><br><span class="line">    <span class="number">0xf8</span>，<span class="comment">//7</span></span><br><span class="line">    <span class="number">0x80</span>，<span class="comment">//8</span></span><br><span class="line">    <span class="number">0x90</span>，<span class="comment">//9</span></span><br><span class="line">    <span class="number">0x88</span>，<span class="comment">//A</span></span><br><span class="line">    <span class="number">0x83</span>，<span class="comment">//B</span></span><br><span class="line">    <span class="number">0xc6</span>，<span class="comment">//C</span></span><br><span class="line">    <span class="number">0xa1</span>，<span class="comment">//D</span></span><br><span class="line">    <span class="number">0x86</span>，<span class="comment">//E</span></span><br><span class="line">    <span class="number">0x8e</span>, <span class="comment">//F</span></span><br><span class="line">    <span class="number">0x8c</span>, <span class="comment">//P</span></span><br><span class="line">    <span class="number">0xc1</span>,<span class="comment">//U</span></span><br><span class="line">    <span class="number">0x91</span>,<span class="comment">//Y</span></span><br><span class="line">    <span class="number">0x7c</span>,<span class="comment">//L</span></span><br><span class="line">    <span class="number">0x00</span>,<span class="comment">//全亮</span></span><br><span class="line">    <span class="number">0xff</span>  <span class="comment">//熄灭</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">uchar code leddata[]=&#123;</span><br><span class="line">    <span class="comment">/*共阴极，位选低电平有效，段选高电平有效*/</span></span><br><span class="line">    <span class="number">0x3F</span>,  <span class="comment">//&quot;0&quot;</span></span><br><span class="line">    <span class="number">0x06</span>,  <span class="comment">//&quot;1&quot;</span></span><br><span class="line">    <span class="number">0x5B</span>,  <span class="comment">//&quot;2&quot;</span></span><br><span class="line">    <span class="number">0x4F</span>,  <span class="comment">//&quot;3&quot;</span></span><br><span class="line">    <span class="number">0x66</span>,  <span class="comment">//&quot;4&quot;</span></span><br><span class="line">    <span class="number">0x6D</span>,  <span class="comment">//&quot;5&quot;</span></span><br><span class="line">    <span class="number">0x7D</span>,  <span class="comment">//&quot;6&quot;</span></span><br><span class="line">    <span class="number">0x07</span>,  <span class="comment">//&quot;7&quot;</span></span><br><span class="line">    <span class="number">0x7F</span>,  <span class="comment">//&quot;8&quot;</span></span><br><span class="line">    <span class="number">0x6F</span>,  <span class="comment">//&quot;9&quot;</span></span><br><span class="line">    <span class="number">0x77</span>,  <span class="comment">//&quot;A&quot;</span></span><br><span class="line">    <span class="number">0x7C</span>,  <span class="comment">//&quot;B&quot;</span></span><br><span class="line">    <span class="number">0x39</span>,  <span class="comment">//&quot;C&quot;</span></span><br><span class="line">    <span class="number">0x5E</span>,  <span class="comment">//&quot;D&quot;</span></span><br><span class="line">    <span class="number">0x79</span>,  <span class="comment">//&quot;E&quot;</span></span><br><span class="line">    <span class="number">0x71</span>,  <span class="comment">//&quot;F&quot;</span></span><br><span class="line">    <span class="number">0x76</span>,  <span class="comment">//&quot;H&quot;</span></span><br><span class="line">    <span class="number">0x38</span>,  <span class="comment">//&quot;L&quot;</span></span><br><span class="line">    <span class="number">0x37</span>,  <span class="comment">//&quot;n&quot;</span></span><br><span class="line">    <span class="number">0x3E</span>,  <span class="comment">//&quot;u&quot;</span></span><br><span class="line">    <span class="number">0x73</span>,  <span class="comment">//&quot;P&quot;</span></span><br><span class="line">    <span class="number">0x5C</span>,  <span class="comment">//&quot;o&quot;</span></span><br><span class="line">    <span class="number">0x40</span>,  <span class="comment">//&quot;-&quot;</span></span><br><span class="line">    <span class="number">0x00</span>  <span class="comment">//熄灭</span></span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-动态数码管显示">4-2 动态数码管显示</h4>
+<p>数码管串位现象（数码管消影）下一次位选和上一次段选重合。<br>
+解决方式：在下一次位选之前段选清零</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//....</span></span><br><span class="line">P0=NixieTable[Number];</span><br><span class="line">Delay(<span class="number">1</span>);</span><br><span class="line">P0=<span class="number">0x00</span>；   <span class="comment">//清零</span></span><br></pre></td></tr></table></figure>
+<h6 id="数码管驱动方式">数码管驱动方式</h6>
+<ol>
+<li>单片机直接扫描（动态扫描）<br>
+硬件设备简单，但会耗费大量的单片机 CPU 时间</li>
+<li>专用驱动芯片<br>
+内部自带现存、扫描电路，单片机只需告诉它显示什么即可</li>
+</ol>
+<h3 id="5-编程与调试">5 编程与调试</h3>
+<h4 id="5-1-模块化编程">5-1 模块化编程</h4>
+<ul>
+<li>传统方式编程<br>
+所有函数在 main.c，模块较多则不利于代码组织与管理，影响思路。</li>
+<li>模块化编程<br>
+将模块独立放在不同的.c 文件，在.h 文件里提供外部可调用函数的声明，其他.c 文件想使用其中的代码，只需 include 调用即可。使用模块化编程课极大提高代码的可阅读性、可维护性、可移植性等。<br>
+<code>fun.c-&gt;fun.h-&gt;main.c</code></li>
+<li>模块化编程的注意事项
+<ul>
+<li>.c 文件：函数、变量的定义</li>
+<li>.h 文件：可被外部调用的函数、变量的声明</li>
+<li>任何自定义的变量、函数在调用前有定义或声明</li>
+<li>使用到的自定义函数的.c 需参与编译</li>
+<li>使用到的.h 文件必须要放在百年一起可寻找到的地方（<strong>工程文件夹根目录</strong>、安装目录、自定义）</li>
+</ul>
+</li>
+</ul>
+<h4 id="C-预编译">C 预编译</h4>
+<p>以#开头，在编译前对代码做出的一些处理</p>
+<h4 id="5-2-LCD1602-调试工具">5-2 LCD1602 调试工具</h4>
+<p>常用函数<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16744832071901674483206640.png"
+                        alt=""
+                 ></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">LCD_Init</span><span class="params">()</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">LCD_ShowChar</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Line,<span class="type">unsigned</span> <span class="type">char</span> Column,<span class="type">char</span> Char)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">LCD_ShowString</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Line,<span class="type">unsigned</span> <span class="type">char</span> Column,<span class="type">char</span> *String)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">LCD_ShowNum</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Line,<span class="type">unsigned</span> <span class="type">char</span> Column,<span class="type">unsigned</span> <span class="type">int</span> Number,<span class="type">unsigned</span> <span class="type">char</span> Length)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">LCD_ShowSignedNum</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Line,<span class="type">unsigned</span> <span class="type">char</span> Column,<span class="type">int</span> Number,<span class="type">unsigned</span> <span class="type">char</span> Length)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">LCD_ShowHexNum</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Line,<span class="type">unsigned</span> <span class="type">char</span> Column,<span class="type">unsigned</span> <span class="type">int</span> Number,<span class="type">unsigned</span> <span class="type">char</span> Length)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">LCD_ShowBinNum</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Line,<span class="type">unsigned</span> <span class="type">char</span> Column,<span class="type">unsigned</span> <span class="type">int</span> Number,<span class="type">unsigned</span> <span class="type">char</span> Length)</span>;</span><br></pre></td></tr></table></figure>
+<p>函数定义详见<code>LCE1602.c</code></p>
+<h3 id="6-矩阵键盘">6 矩阵键盘</h3>
+<h4 id="6-1-矩阵键盘">6-1 矩阵键盘</h4>
+<p>为节省 IO 口，逐行逐列扫描，可读出任何位置按键的状态</p>
+<h4 id="6-2-矩阵键盘密码锁">6-2 矩阵键盘密码锁</h4>
+<p>矩阵键盘+LCD1602<br>
+补充：单行清屏显示</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第二行的清除函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">LCD1602_Clear_2LINE</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">	LCD_WriteCommand(<span class="number">0x80</span>+<span class="number">0x40</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">16</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	LCD_WriteData(<span class="number">0x20</span>);  <span class="comment">//无显示</span></span><br><span class="line">	&#125;<span class="comment">//详见函数定义文件及LCD指令集</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-定时器">7 定时器</h3>
+<h4 id="7-1-定时器">7-1 定时器</h4>
+<ul>
+<li>定时器介绍：51 单片机的定时器属于单片机的内部资源，其电路的连接和运转均在单片机内部完成</li>
+<li>定时器作用：<br>
+（1）用于计时系统，可实现软件计时，或者使程序每隔一固定时间完成一项操作<br>
+（2）替代长时间的 Delay，提高 CPU 的运行效率和处理速度<br>
+（…）</li>
+<li>定时器工作模式
+<ul>
+<li>模式 0：13 位定时器/计数器</li>
+<li>模式 1：16 位定时器/计数器</li>
+<li>模式 2：8 位自动重装模式</li>
+<li>模式 3：两个 8 位定时器</li>
+</ul>
+</li>
+<li>时钟来源：
+<ul>
+<li>系统时钟（晶振周期），本开发板晶振的频率 12MHz，周期 1/12us,机器周期为 12*1/12us=1us</li>
+<li>外部 IO 口时钟（T0-P3.4,T1-P3.5）</li>
+</ul>
+</li>
+<li>定时器和计数器：
+<ul>
+<li>二者核心部件都是一个加减法计数器，其本质相同均为对脉冲进行计数</li>
+<li>区别在于定时器的计数脉冲来自系统时钟，计数器的计数脉冲来自外部时钟</li>
+</ul>
+</li>
+</ul>
+<h5 id="中断系统">中断系统</h5>
+<p>是为使 CPU 具有对外界紧急事件的实时处理能力而设置的。<br>
+CPU 总是先相应优先级别最高的中断请求。</p>
+<h5 id="相关寄存器">相关寄存器</h5>
+<p>51单片机内计时器是由特殊的功能寄存器控制<br>
+寄存器是连接软硬件的媒介<br>
+在单片机中寄存器就是一段特殊的 RAM 存储器，一方面，寄存器可以存储和读取数据，另一方面，每一个寄存器背后都连接了一根导线，控制着电路的连接方式<br>
+寄存器相当于一个复杂机器的“操作按钮”<br>
+具体定义详见<code>手册</code></p>
+<ul>
+<li>控制寄存器TCON：
+<ul>
+<li>低四位：外部中断的控制位</li>
+<li>高四位用于定时器启动、停止、移除的标志控制位</li>
+</ul>
+</li>
+<li>模式寄存器TMOD：定时器工作方式及功能的确定（定时|计数）<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16747150093031674715008436.png"
+                        alt=""
+                 ></li>
+</ul>
+<h4 id="7-2-按键控制-LED-流水灯模式-定时器闹钟">7-2 按键控制 LED 流水灯模式&amp;定时器闹钟</h4>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                51单片机入门
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2023/01/20/51单片机入门/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">2inc</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2023-01-20 11:18</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%94%B5%E8%B5%9B/">电赛</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/51%E5%8D%95%E7%89%87%E6%9C%BA/">51单片机</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Keil/">Keil</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/02/06/%E3%80%90%E5%A4%A7%E5%94%90%E6%9D%AF%E3%80%915G%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2/"
+                                   title="【大唐杯】5G网络架构与组网部署"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【大唐杯】5G网络架构与组网部署</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://www.zinan2inc.xyz/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8D%95%E7%89%87%E6%9C%BA%E5%8F%8A%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BB%8B%E7%BB%8D"><span class="nav-text">1 单片机及开发板介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%89%87%E6%9C%BA"><span class="nav-text">单片机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#STC89C52-%E5%8D%95%E7%89%87%E6%9C%BA"><span class="nav-text">STC89C52 单片机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-text">命名规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LED"><span class="nav-text">2 LED</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3"><span class="nav-text">3 按键开关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6-LED-%E4%BA%AE%E7%81%AD"><span class="nav-text">3-1 独立按键控制 LED 亮灭</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E6%95%B0%E6%8D%AE%E8%BF%90%E7%AE%97"><span class="nav-text">C51 数据运算</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5"><span class="nav-text">C51 基本语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6-LED-%E7%8A%B6%E6%80%81"><span class="nav-text">3-2 按键控制 LED 状态</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%8A%96%E5%8A%A8"><span class="nav-text">按键抖动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B6%88%E6%8A%96"><span class="nav-text">消抖</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%95%B0%E7%A0%81%E7%AE%A1"><span class="nav-text">4 数码管</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1%E6%98%BE%E7%A4%BA"><span class="nav-text">4-1 静态数码管显示</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%A0%81%E7%AE%A1%E4%BB%8B%E7%BB%8D"><span class="nav-text">数码管介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E6%95%B0%E7%BB%84"><span class="nav-text">C51 数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E5%AD%90%E5%87%BD%E6%95%B0"><span class="nav-text">C51 子函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%A0%81%E7%AE%A1%E6%AE%B5%E7%A0%81%E8%A1%A8"><span class="nav-text">数码管段码表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1%E6%98%BE%E7%A4%BA"><span class="nav-text">4-2 动态数码管显示</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%A0%81%E7%AE%A1%E9%A9%B1%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-text">数码管驱动方式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%BC%96%E7%A8%8B%E4%B8%8E%E8%B0%83%E8%AF%95"><span class="nav-text">5 编程与调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B"><span class="nav-text">5-1 模块化编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E9%A2%84%E7%BC%96%E8%AF%91"><span class="nav-text">C 预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-LCD1602-%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-text">5-2 LCD1602 调试工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%9F%A9%E9%98%B5%E9%94%AE%E7%9B%98"><span class="nav-text">6 矩阵键盘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-%E7%9F%A9%E9%98%B5%E9%94%AE%E7%9B%98"><span class="nav-text">6-1 矩阵键盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-%E7%9F%A9%E9%98%B5%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81%E9%94%81"><span class="nav-text">6-2 矩阵键盘密码锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-text">7 定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-text">7-1 定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F"><span class="nav-text">中断系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-text">相关寄存器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6-LED-%E6%B5%81%E6%B0%B4%E7%81%AF%E6%A8%A1%E5%BC%8F-%E5%AE%9A%E6%97%B6%E5%99%A8%E9%97%B9%E9%92%9F"><span class="nav-text">7-2 按键控制 LED 流水灯模式&amp;定时器闹钟</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">2inc</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/2incccc/2incccc.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">26k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8D%95%E7%89%87%E6%9C%BA%E5%8F%8A%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BB%8B%E7%BB%8D"><span class="nav-text">1 单片机及开发板介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%89%87%E6%9C%BA"><span class="nav-text">单片机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#STC89C52-%E5%8D%95%E7%89%87%E6%9C%BA"><span class="nav-text">STC89C52 单片机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-text">命名规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LED"><span class="nav-text">2 LED</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8C%89%E9%94%AE%E5%BC%80%E5%85%B3"><span class="nav-text">3 按键开关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6-LED-%E4%BA%AE%E7%81%AD"><span class="nav-text">3-1 独立按键控制 LED 亮灭</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E6%95%B0%E6%8D%AE%E8%BF%90%E7%AE%97"><span class="nav-text">C51 数据运算</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E5%8F%A5"><span class="nav-text">C51 基本语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6-LED-%E7%8A%B6%E6%80%81"><span class="nav-text">3-2 按键控制 LED 状态</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%8A%96%E5%8A%A8"><span class="nav-text">按键抖动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B6%88%E6%8A%96"><span class="nav-text">消抖</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%95%B0%E7%A0%81%E7%AE%A1"><span class="nav-text">4 数码管</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1%E6%98%BE%E7%A4%BA"><span class="nav-text">4-1 静态数码管显示</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%A0%81%E7%AE%A1%E4%BB%8B%E7%BB%8D"><span class="nav-text">数码管介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E6%95%B0%E7%BB%84"><span class="nav-text">C51 数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C51-%E5%AD%90%E5%87%BD%E6%95%B0"><span class="nav-text">C51 子函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%A0%81%E7%AE%A1%E6%AE%B5%E7%A0%81%E8%A1%A8"><span class="nav-text">数码管段码表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1%E6%98%BE%E7%A4%BA"><span class="nav-text">4-2 动态数码管显示</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E7%A0%81%E7%AE%A1%E9%A9%B1%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-text">数码管驱动方式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%BC%96%E7%A8%8B%E4%B8%8E%E8%B0%83%E8%AF%95"><span class="nav-text">5 编程与调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B"><span class="nav-text">5-1 模块化编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-%E9%A2%84%E7%BC%96%E8%AF%91"><span class="nav-text">C 预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-LCD1602-%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-text">5-2 LCD1602 调试工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E7%9F%A9%E9%98%B5%E9%94%AE%E7%9B%98"><span class="nav-text">6 矩阵键盘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-%E7%9F%A9%E9%98%B5%E9%94%AE%E7%9B%98"><span class="nav-text">6-1 矩阵键盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-%E7%9F%A9%E9%98%B5%E9%94%AE%E7%9B%98%E5%AF%86%E7%A0%81%E9%94%81"><span class="nav-text">6-2 矩阵键盘密码锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-text">7 定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-1-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-text">7-1 定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F"><span class="nav-text">中断系统</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-text">相关寄存器</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-%E6%8C%89%E9%94%AE%E6%8E%A7%E5%88%B6-LED-%E6%B5%81%E6%B0%B4%E7%81%AF%E6%A8%A1%E5%BC%8F-%E5%AE%9A%E6%97%B6%E5%99%A8%E9%97%B9%E9%92%9F"><span class="nav-text">7-2 按键控制 LED 流水灯模式&amp;定时器闹钟</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/lazyload.min.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+        
+            
+<script class="custom-inject-js" src="/js/custom.js" data-pjax></script>
+
+        
+    
+
+</body>
+</html>

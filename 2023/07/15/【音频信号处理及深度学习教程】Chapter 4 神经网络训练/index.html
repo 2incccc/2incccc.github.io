@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="永远相信美好的事情即将发生">
+    <meta name="author" content="2inc">
+    
+    <title>
+        
+            【深度学习教程】Chapter 4 神经网络训练 |
+        
+        Zynestro
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/img/logo_2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/brands.min.css">
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"2incccc.github.io","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#6ed072","title":"Zynestro","author":"2inc","avatar":"/img/微信图片_20240707221033.jpg","logo":"/img/logo_2.png","favicon":"img/logo_2.png"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","photos":"/photos || fa-solid fa-image","about":{"icon":"fa-solid fa-circle-info","children":[{"Me":"/about || fa-solid fa-user"},{"Site":"/site || fa-solid fa-flag"}]}},"first_screen":{"enable":false,"background_img":"/img/wallhaven-3k8656.jpg","background_img_dark":"/img/wallhaven-3k8656.jpg","description":"卒業は終わりじゃない","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/2incccc","weixin":"img |  /img/mmqrcode1721751915317.png","qq":"img | /img/mmqrcode1721751915317.png","weibo":null,"zhihu":"https://www.zhihu.com/people/zinan2inc","twitter":null,"x":null,"facebook":null,"email":"zinan2inc@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://www.zinan2inc.xyz/","reaction":true,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/2incccc/2incccc.github.io"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null,"/js/custom.js"]},"root":"","source_data":{},"version":"4.2.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/img/logo_2.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zynestro
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/photos">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-image"></i>
+                                
+                                相册
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                
+                                关于
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/about">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                                
+                                                ME
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/site">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                                
+                                                SITE
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/photos">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-image"></i>
+                                </span>
+                            
+                            相册
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/about">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                            </span>
+                                        
+                                        ME
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/site">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                            </span>
+                                        
+                                        SITE
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        【深度学习教程】Chapter 4 神经网络训练
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240707221033.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">2inc</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-07-15 01:23:05</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Jan 27 2025 15:13:44 GMT+0800">2025-01-27 15:13:44</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%8F%8A%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B/">音频信号处理及深度学习教程</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7/">音频信号</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%A3%B0%E5%AD%A6/">声学</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">信号处理</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.4k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>10 分钟</span>
+            </span>
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="Chapter-4-神经网络训练">Chapter 4  神经网络训练</h2>
+<h3 id="神经网络训练">神经网络训练</h3>
+<p>训练的过程是反向传播的过程，利用得到的输出值与预测值的偏差，（损失函数），反向更新模型中的参数</p>
+<h3 id="逼近的思路理解训练">逼近的思路理解训练</h3>
+<p>随机生成一个三阶函数，赋予一组随机参数，得到的输出与 sine 输出值比较，差值 loss 最小的那一组参数就为目标函数。</p>
+<ul>
+<li>流程：
+<ol>
+<li>根据预测值和标签值得到 loss</li>
+<li>Loss 函数对各个参数反向求偏导</li>
+<li>计算每个参数的梯度</li>
+<li>更新参数值</li>
+<li>梯度置 0</li>
+<li>再次循环</li>
+</ol>
+</li>
+</ul>
+<span id="more"></span>
+<h4 id="反向传播">反向传播</h4>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16893535815091689353580690.png"
+                        alt="16893535815091689353580690.png"
+                 ></p>
+<h4 id="高阶函数构造-sin-x-c">高阶函数构造 sin(x) c</h4>
+<ol>
+<li>常规思路：loss 对各参数求偏导，计算梯度，更新梯度值，梯度置 0</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;用一个三阶函数找到合适的参数 逼近y=sinx</span></span><br><span class="line"><span class="string"># 1.构建三阶函数</span></span><br><span class="line"><span class="string"># 2.给定输入，得到该函数的输出值,共循环500次</span></span><br><span class="line"><span class="string"># 3.得到该函数的输出值与y=sinx的输出 偏差loss函数</span></span><br><span class="line"><span class="string"># 4.为了得到loss最小，求该函数的极小值（导数）</span></span><br><span class="line"><span class="string"># 5.根据梯度值，更新参数</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 0.sine</span></span><br><span class="line">x = np.linspace(start=-np.pi,stop=np.pi,num=<span class="number">2000</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line"></span><br><span class="line">a,b,c,d = np.random.rand(),np.random.rand(),np.random.rand(),np.random.rand()</span><br><span class="line">learning_rate = <span class="number">1e-6</span></span><br><span class="line"><span class="comment"># 学习率（learning rate）用于控制参数更新的步长。它决定了每一步更新中参数的变化量。</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">200000</span>):</span><br><span class="line">    y_pred = a + b*x + c*x**<span class="number">2</span> + d*x**<span class="number">3</span></span><br><span class="line">    loss = np.square(y_pred - y).<span class="built_in">sum</span>()</span><br><span class="line">    grad_y_pre = <span class="number">2</span> * (y_pred - y)</span><br><span class="line">    grad_a = grad_y_pre.<span class="built_in">sum</span>()</span><br><span class="line">    grad_b = (grad_y_pre * x**<span class="number">1</span>).<span class="built_in">sum</span>()</span><br><span class="line">    grad_c = (grad_y_pre * x**<span class="number">2</span>).<span class="built_in">sum</span>()</span><br><span class="line">    grad_d = (grad_y_pre * x**<span class="number">3</span>).<span class="built_in">sum</span>()</span><br><span class="line"></span><br><span class="line">    a -= learning_rate * grad_a</span><br><span class="line">    b -= learning_rate * grad_b</span><br><span class="line">    c -= learning_rate * grad_c</span><br><span class="line">    d -= learning_rate * grad_d</span><br><span class="line">    <span class="comment"># 以上为求导过程</span></span><br><span class="line">    <span class="comment"># 根据链式法则，损失函数关于b的偏导数可以表示为：∂loss/∂b = ∂loss/∂y_pred * ∂y_pred/∂b</span></span><br><span class="line">    <span class="keyword">if</span> epoch%<span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">    <span class="comment"># Epoch（时期）是指将整个训练数据集（dataset）通过神经网络进行前向传播和反向传播的一次完整迭代。</span></span><br><span class="line">        <span class="built_in">print</span>(loss)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;y_pred = <span class="subst">&#123;a.item()&#125;</span> + <span class="subst">&#123;b.item()&#125;</span>*x + <span class="subst">&#123;c.item()&#125;</span>*x^2 + <span class="subst">&#123;d.item()&#125;</span>*x^3&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>loss.backward():由该函数确定更新后的参数值 （这是一个 PyTorch 库中的函数，输入输出需要为张量）</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;用一个三阶函数找到合适的参数 逼近y=sinx</span></span><br><span class="line"><span class="string"># 1.构建三阶函数</span></span><br><span class="line"><span class="string"># 2.给定输入，得到该函数的输出值,共循环500次</span></span><br><span class="line"><span class="string"># 3.得到该函数的输出值与y=sinx的输出 偏差loss函数</span></span><br><span class="line"><span class="string"># 4.为了得到loss最小，求该函数的极小值（导数）</span></span><br><span class="line"><span class="string"># 5.根据梯度值，更新参数</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 0.sine</span></span><br><span class="line">x = torch.linspace(start=-torch.pi,end=torch.pi,steps=<span class="number">2000</span>)</span><br><span class="line">y = torch.sin(x)</span><br><span class="line"></span><br><span class="line">a,b,c,d = torch.rand((),requires_grad=<span class="literal">True</span>),torch.rand((),requires_grad=<span class="literal">True</span>),\</span><br><span class="line">          torch.rand((),requires_grad=<span class="literal">True</span>),torch.rand((),requires_grad=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">learning_rate = <span class="number">1e-6</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2000</span>):</span><br><span class="line">    y_pred = a + b*x + c*x**<span class="number">2</span> + d*x**<span class="number">3</span></span><br><span class="line">    loss = torch.square((y_pred - y),).<span class="built_in">sum</span>()</span><br><span class="line">    debug = <span class="number">1</span></span><br><span class="line">    loss.backward() <span class="comment"># 使用该函数，代替求导的过程</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        a -= learning_rate * a.grad</span><br><span class="line">        b -= learning_rate * b.grad</span><br><span class="line">        c -= learning_rate * c.grad</span><br><span class="line">        d -= learning_rate * d.grad</span><br><span class="line"></span><br><span class="line">        a.grad = <span class="literal">None</span></span><br><span class="line">        b.grad = <span class="literal">None</span></span><br><span class="line">        c.grad = <span class="literal">None</span></span><br><span class="line">        d.grad = <span class="literal">None</span></span><br><span class="line">    debug = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> epoch%<span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(loss)  </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;y_pred = <span class="subst">&#123;a.item()&#125;</span> + <span class="subst">&#123;b.item()&#125;</span>*x + <span class="subst">&#123;c.item()&#125;</span>*x^2 + <span class="subst">&#123;d.item()&#125;</span>*x^3&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>optimiser.step(): 优化器函数（同上）</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;用一个网络模型 逼近y=sinx</span></span><br><span class="line"><span class="string"># 1.给定输入，得到sin的输出值为y</span></span><br><span class="line"><span class="string"># 2.给定输入，根据y=a+b*x+c*x**2+d*x**3,计算^1,^2,^3不同幂次下的结果</span></span><br><span class="line"><span class="string"># 3.构建网络模型，利用线性层将不同幂次下的结果按一定权重相加，包含线性层Linear(3,1),Flatten()</span></span><br><span class="line"><span class="string"># 4.将三个结果放入模型得到该函数的输出值,共循环500-&gt;2000次</span></span><br><span class="line"><span class="string"># 4.得到该函数的输出值与y=sinx的输出,偏差loss函数= torch.square(y_pre - y).sum()</span></span><br><span class="line"><span class="string"># 5.为了得到loss最小，求该函数的极小值（导数）loss.backward()</span></span><br><span class="line"><span class="string"># 6.根据梯度值，更新参数 param -= learning_rate * param.grad 之后 model.zero_grad()</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Liner</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.model = nn.Sequential(nn.Linear(<span class="number">3</span>,<span class="number">1</span>),nn.Flatten(<span class="number">0</span>,<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,data</span>):</span><br><span class="line">        output = self.model(data)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line">x = torch.linspace(-torch.pi,torch.pi,<span class="number">2_000</span>)</span><br><span class="line">y = torch.sin(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># x^1,x^2,x^3</span></span><br><span class="line">mynn = Liner()</span><br><span class="line">p = torch.tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="built_in">input</span> = x.unsqueeze(-<span class="number">1</span>).<span class="built_in">pow</span>(p)</span><br><span class="line">learning_rate = <span class="number">1e-4</span></span><br><span class="line">optimiser = torch.optim.RMSprop(params=mynn.model.parameters(),lr=learning_rate)</span><br><span class="line">loss_fn = torch.nn.MSELoss() <span class="comment"># 代替square平方求和</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2_000</span>):</span><br><span class="line">    y_pre = mynn(<span class="built_in">input</span>)</span><br><span class="line">    loss = loss_fn(y_pre,y)</span><br><span class="line">    layer_liner = mynn.model[<span class="number">0</span>]</span><br><span class="line">    layer_flatten = mynn.model[<span class="number">1</span>]</span><br><span class="line">    debug = <span class="number">1</span></span><br><span class="line">    optimiser.zero_grad() <span class="comment"># 用于将模型参数的梯度归零。</span></span><br><span class="line">    loss.backward() <span class="comment"># 反向更新参数</span></span><br><span class="line">    optimiser.step() <span class="comment"># 优化器，代替-=的过程</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> epoch % <span class="number">10</span>==<span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(loss)</span><br><span class="line">    debug = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">debug = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>需要注意：</strong><br>
+<code>optimiser = torch.optim.RMSprop(params=mynn.model.parameters(),lr=learning_rate)</code> 定义了一个优化器，参数是模型中的各个参数，<code>lr</code> 是学习率。在机器学习和深度学习中，优化器（Optimizer）是一种用于调整模型参数以最小化损失函数的算法或方法。优化器根据模型的梯度信息和指定的优化算法，更新模型参数的值，以便使损失函数达到最小值或接近最小值。在训练神经网络模型的过程中，优化器的作用非常重要。它能够根据损失函数的梯度信息来更新模型参数，使得模型能够逐步调整自身以更好地拟合训练数据。<br>
+<code>loss.Backward()</code> 的任务是执行反向传播计算梯度。具体来说，它计算损失函数 loss 关于模型参数的梯度，通过使用链式法则将梯度从损失函数传播到模型的每个参数。这样可以获得每个参数相对于损失函数的梯度信息，即参数的更新方向和大小。<br>
+<code>optimiser.step()</code> 的任务是根据梯度信息更新模型参数的值。它使用优化算法（如 RMSprop）和学习率来计算参数的更新量，并将这个更新量应用到模型的参数上，从而更新参数的值。这样，模型的参数会朝着减小损失函数的方向进行调整。</p>
+<h4 id="损失函数与优化器">损失函数与优化器</h4>
+<ul>
+<li>常用的损失函数
+<ol>
+<li>平方损失  输出-预期的平方的求和</li>
+<li><strong>最大似然</strong>处理，输出的结果（似然值）视为概率，再去求得到该结果概率值最大的权重系数 w。已知事情发生的结果，反推发生该结果概率最大的参数 w P(x|w,b)</li>
+<li>交叉熵损失</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;损失函数的使用</span></span><br><span class="line"><span class="string"># 1.定义两个变量</span></span><br><span class="line"><span class="string"># 2.损失函数选择L1Loss()，参量选择 均值与取和——(P1-E1)+(P2-E2)+...(PN-EN)/N</span></span><br><span class="line"><span class="string"># 3.损失函数选择MSELoss()——(P1-E1)^2+(P2-E2)^2+...(PN-EN)^2/N</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line">y_pred = torch.tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],dtype=torch.float32)</span><br><span class="line">y = torch.tensor([<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>],dtype=torch.float32)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.损失函数选择L1Loss()，参量选择 均值与取和——(P1-E1)+(P2-E2)+...(PN-EN)/N</span></span><br><span class="line">loss_l1 = torch.nn.L1Loss(reduction=<span class="string">&quot;sum&quot;</span>)</span><br><span class="line">result1 = loss_l1(y_pred,y)</span><br><span class="line"><span class="built_in">print</span>(result1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.损失函数选择MSELoss()——(P1-E1)^2+(P2-E2)^2+...(PN-EN)^2/N</span></span><br><span class="line">loss_mse = torch.nn.MSELoss(reduction=<span class="string">&quot;sum&quot;</span>)</span><br><span class="line">result2 = loss_mse(y_pred,y)</span><br><span class="line"><span class="built_in">print</span>(result2)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>常用的优化器
+<ul>
+<li>SGD</li>
+<li>Adam</li>
+</ul>
+</li>
+</ul>
+<h4 id="构建神经网络全过程">构建神经网络全过程</h4>
+<p>搭建+训练（Chapter 3+4）<br>
+下载数据-&gt;加载数据-&gt;准备模型-&gt;设置损失函数-&gt;设置优化器-&gt;开始训练-&gt;最后验证-&gt;结果聚合展示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.搭建模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Mynetwork</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.model = nn.Sequential(nn.Conv2d(<span class="number">3</span>,<span class="number">32</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>),nn.MaxPool2d(<span class="number">2</span>),</span><br><span class="line">                                   nn.Conv2d(<span class="number">32</span>,<span class="number">32</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>),nn.MaxPool2d(<span class="number">2</span>),</span><br><span class="line">                                   nn.Conv2d(<span class="number">32</span>,<span class="number">64</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>),nn.MaxPool2d(<span class="number">2</span>),</span><br><span class="line">                                   nn.Flatten(),nn.Linear(<span class="number">64</span>*<span class="number">4</span>*<span class="number">4</span>,<span class="number">64</span>),nn.Linear(<span class="number">64</span>,<span class="number">10</span>))</span><br><span class="line">                                   <span class="comment"># 包括卷积、池化、线性等等</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self,data</span>): <span class="comment"># 前向驱动函数</span></span><br><span class="line">        output = self.model(data)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.得到数据集</span></span><br><span class="line"><span class="built_in">input</span> = torch.ones(size=(<span class="number">1</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>),dtype=torch.float32) <span class="comment"># 数据集</span></span><br><span class="line">y = torch.tensor([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]],dtype=torch.float32)</span><br><span class="line"><span class="comment"># 3.调用模型得到输出</span></span><br><span class="line">mynn = Mynetwork()</span><br><span class="line">loss_fn = torch.nn.MSELoss(reduction=<span class="string">&quot;mean&quot;</span>) <span class="comment"># 损失函数</span></span><br><span class="line">optimiser = torch.optim.RMSprop(params=mynn.model.parameters(),lr=<span class="number">1e-4</span>) <span class="comment"># 定义优化器</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> period <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;this is period <span class="subst">&#123;period+<span class="number">1</span>&#125;</span>:&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>):</span><br><span class="line">        y_pred = mynn(<span class="built_in">input</span>) <span class="comment"># 导入模型</span></span><br><span class="line">        <span class="comment"># 4.计算真实值与输出值之间的偏差loss</span></span><br><span class="line">        loss = loss_fn(y_pred,y)</span><br><span class="line">        <span class="comment"># 7.迭代一次后 梯度置零</span></span><br><span class="line">        optimiser.zero_grad()</span><br><span class="line">        <span class="comment"># 5.计算各参量的梯度值</span></span><br><span class="line">        loss.backward()</span><br><span class="line">        <span class="comment"># 6.用优化器更新参数</span></span><br><span class="line">        optimiser.step()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> data % <span class="number">10</span> ==<span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(loss)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;The final outcome is <span class="subst">&#123;y_pred&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">----------------------------------------------------</span><br><span class="line"><span class="comment"># output：</span></span><br><span class="line">this <span class="keyword">is</span> period <span class="number">1</span>:</span><br><span class="line">tensor(<span class="number">38.6425</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">2</span>:</span><br><span class="line">tensor(<span class="number">34.2981</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">3</span>:</span><br><span class="line">tensor(<span class="number">22.4355</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">4</span>:</span><br><span class="line">tensor(<span class="number">3.7360</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">5</span>:</span><br><span class="line">tensor(<span class="number">4.2519</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">6</span>:</span><br><span class="line">tensor(<span class="number">7.7438</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">7</span>:</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">tensor(<span class="number">0.1047</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">96</span>:</span><br><span class="line">tensor(<span class="number">0.1212</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">97</span>:</span><br><span class="line">tensor(<span class="number">0.0982</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">98</span>:</span><br><span class="line">tensor(<span class="number">0.1128</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">99</span>:</span><br><span class="line">tensor(<span class="number">0.0920</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">this <span class="keyword">is</span> period <span class="number">100</span>:</span><br><span class="line">tensor(<span class="number">0.1051</span>, grad_fn=&lt;MseLossBackward0&gt;)</span><br><span class="line">The final outcome <span class="keyword">is</span> tensor([[<span class="number">0.8946</span>, <span class="number">1.8333</span>, <span class="number">2.8251</span>, <span class="number">3.7509</span>, <span class="number">4.7626</span>, <span class="number">5.6981</span>, <span class="number">6.6488</span>, <span class="number">7.6014</span>, <span class="number">8.5054</span>,</span><br><span class="line">         <span class="number">9.5048</span>]], grad_fn=&lt;AddmmBackward0&gt;)</span><br></pre></td></tr></table></figure>
+<p><code>Tensor(38.6425)</code>：这部分表示损失函数的数值，即计算得到的具体损失值。在这个例子中，损失函数的值为 38.6425。<br>
+<code>grad_fn=&lt;MseLossBackward0&gt;</code>：这部分表示损失函数的计算图中的<strong>反向传播函数</strong>。它指示了该张量是通过执行反向传播操作计算得到的，并且在计算图中有一个与之相关的反向传播函数。在这个例子中，使用的是<strong>均方误差损失函数（MSELoss）</strong>，因此显示为 <code>&lt;MseLossBackward0&gt;。</code></p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                【深度学习教程】Chapter 4 神经网络训练
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2023/07/15/【音频信号处理及深度学习教程】Chapter 4 神经网络训练/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">2inc</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2023-07-15 01:23</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%9F%B3%E9%A2%91%E4%BF%A1%E5%8F%B7/">音频信号</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%A3%B0%E5%AD%A6/">声学</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">神经网络</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">信号处理</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/07/24/%E3%80%90%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E3%80%91%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92-%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92-%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92/"
+                                   title="【数学建模】线性规划/整数规划/非线性规划"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【数学建模】线性规划/整数规划/非线性规划</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/02/06/%E3%80%90%E5%A4%A7%E5%94%90%E6%9D%AF%E3%80%915G%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E4%B8%8E%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2/"
+                                   title="【大唐杯】5G网络架构与组网部署"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【大唐杯】5G网络架构与组网部署</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://www.zinan2inc.xyz/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83"><span class="nav-text">Chapter 4  神经网络训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83"><span class="nav-text">神经网络训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BC%E8%BF%91%E7%9A%84%E6%80%9D%E8%B7%AF%E7%90%86%E8%A7%A3%E8%AE%AD%E7%BB%83"><span class="nav-text">逼近的思路理解训练</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">反向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0-sin-x-c"><span class="nav-text">高阶函数构造 sin(x) c</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BC%98%E5%8C%96%E5%99%A8"><span class="nav-text">损失函数与优化器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">构建神经网络全过程</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">2inc</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/2incccc/2incccc.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">26k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-4-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83"><span class="nav-text">Chapter 4  神经网络训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83"><span class="nav-text">神经网络训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BC%E8%BF%91%E7%9A%84%E6%80%9D%E8%B7%AF%E7%90%86%E8%A7%A3%E8%AE%AD%E7%BB%83"><span class="nav-text">逼近的思路理解训练</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">反向传播</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0-sin-x-c"><span class="nav-text">高阶函数构造 sin(x) c</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E4%B8%8E%E4%BC%98%E5%8C%96%E5%99%A8"><span class="nav-text">损失函数与优化器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">构建神经网络全过程</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/lazyload.min.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+        
+            
+<script class="custom-inject-js" src="/js/custom.js" data-pjax></script>
+
+        
+    
+
+</body>
+</html>
