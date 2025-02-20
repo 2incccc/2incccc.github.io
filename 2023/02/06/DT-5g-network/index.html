@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="永远相信美好的事情即将发生">
+    <meta name="author" content="2inc">
+    
+    <title>
+        
+            【大唐杯】5G网络架构与组网部署 |
+        
+        Zynestro
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/img/logo_2.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/font/css/brands.min.css">
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"2incccc.github.io","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#6ed072","title":"Zynestro","author":"2inc","avatar":"/img/微信图片_20240707221033.jpg","logo":"/img/logo_2.png","favicon":"img/logo_2.png"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","tags":"/tags || fa-solid fa-tags","categories":"/categories || fa-solid fa-layer-group","links":"/links || fa-solid fa-link","photos":"/photos || fa-solid fa-image","about":{"icon":"fa-solid fa-circle-info","children":[{"Me":"/about || fa-solid fa-user"},{"Site":"/site || fa-solid fa-flag"}]}},"first_screen":{"enable":false,"background_img":"/img/wallhaven-3k8656.jpg","background_img_dark":"/img/wallhaven-3k8656.jpg","description":"卒業は終わりじゃない","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/2incccc","weixin":"img |  /img/mmqrcode1721751915317.png","qq":"img | /img/mmqrcode1721751915317.png","weibo":null,"zhihu":"https://www.zhihu.com/people/zinan2inc","twitter":null,"x":null,"facebook":null,"email":"zinan2inc@163.com"}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://www.zinan2inc.xyz/","reaction":true,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2022,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://github.com/2incccc/2incccc.github.io"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/custom.css"],"js":[null,"/js/custom.js"]},"root":"","source_data":{},"version":"4.2.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/img/logo_2.png">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               Zynestro
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/photos">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-image"></i>
+                                
+                                相册
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                
+                                关于
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/about">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                                
+                                                ME
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/site">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                                
+                                                SITE
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/photos">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-image"></i>
+                                </span>
+                            
+                            相册
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-circle-info"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/about">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-user"></i>
+                                            </span>
+                                        
+                                        ME
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/site">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-flag"></i>
+                                            </span>
+                                        
+                                        SITE
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        【大唐杯】5G网络架构与组网部署
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240707221033.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">2inc</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-02-06 22:13:59</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Feb 20 2025 17:35:08 GMT+0800">2025-02-20 17:35:08</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/5G/">5G</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%80%9A%E4%BF%A1/">通信</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%A4%A7%E5%94%90%E6%9D%AF/">大唐杯</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.8k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>10 分钟</span>
+            </span>
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <blockquote>
+<p>课程来源：<a class="link" target="_blank" rel="noopener" href="http://dtmobile.yunxuetang.cn/kng/course/package/video/f6891000087d4267b93c238b767b3078_494a8399c8a446b78073c9d8ca865dca.html?MasterID=55b4778d-3c9a-4769-8e34-f74cc14f0563&amp;MasterType=O2OStudy&amp;taskId=55b4778d-3c9a-4769-8e34-f74cc14f0563&amp;uniqueid=1675669032400">第一章-5G网络架构与组网部署-01<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h2 id="课程目标">课程目标</h2>
+<ul>
+<li>5G网络整体<strong>架构</strong>组成</li>
+<li>主要<strong>网元功能</strong></li>
+<li>网元间<strong>接口关系</strong></li>
+<li>了解5G网络组网<strong>部署策略</strong></li>
+</ul>
+<h2 id="目录">目录</h2>
+<ul>
+<li>1.1 5G网络架构的演进趋势</li>
+<li>1.2 5G网元功能与接口</li>
+<li>1.3 5G网络组网部署</li>
+</ul>
+<h2 id="1-1-5G网络架构的演进趋势">1.1 5G网络架构的演进趋势</h2>
+<span id="more"></span>
+<h3 id="概述">概述</h3>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756694609251675669460092.png"><br>
+5G通信系统包括 <code>5GC(5G Core Network)</code> 和 <code>NG-RAN(Next Generation Radio Access Network)</code><br>
+<code>NG</code>接口链接核心网和接入网，实现控制面和用户面功能；<br>
+<code>Xn</code>接口链接接入网，实现控制面和用户面功能。<br>
+<em>接口为逻辑接口</em><br>
+<code>gNB</code>:5G基站<br>
+<code>ng-eNB</code>:增强4G基站<br>
+<code>AMF/UPF/SMF</code> 核心网网元</p>
+<hr>
+<p>4G移动通信系统包括<code>EPC(Evolved Packet Core network),演进分组核心网</code>和<code>E-UTRAN(Evolved Universal Terrestrial Radio Access Network)演进通用陆地无线接入网络</code><br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756702849441675670284898.png"><br>
+<code>S1</code> <code>X2</code> 接口</p>
+<hr>
+<p>5G 4G系统整体架构类似，区别如下：</p>
+<ul>
+<li>RAN网络引入 <code>CU</code> <code>DU</code> 组网灵活</li>
+<li>MEC(Multi-access Edge Connection)多接入边缘计算是5G系统运行的关键技术，可实现5GC的部分功能，可将核心网部署在靠近基站的地方，降低时延。</li>
+</ul>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756704969251675670496330.png"></p>
+<ul>
+<li><a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145532668">关于前传中传回传<i class="fas fa-external-link-alt"></i></a><br>
+一个基站，通常包括BBU(Building Base band Unit，基带单元，主要负责信号调制)、RRU(Remote Radio Unit，主要负责射频处理)，馈线(连接RRU和天线)，天线(主要负责线缆上导行波和空气中空间波之间的转换)。4G每个基站都有一个BBU，并通过BBU直接连到核心网。<br>
+而在5G网络中，接入网不再是由BBU、RRU、天线这些东西组成了。而是被重构为以下3个功能实体：<br>
+CU(Centralized Unit，集中单元)，DU(Distribute Unit，分布单元)，AAU(Active Antenna Unit，有源天线单元)。<br>
+原来4G的RRU和天线合并成AAU（<strong>方便大规模天线的实现</strong>），把BBU分离成CU和DU，DU下沉（见图1-3）到AAU处，一个CU可以连接多个DU。<br>
+4G只有前传和回传两部分，在5G网络中则演变为三个部分，AAU连接DU部分称为5G前传（Fronthaul），中传（Middlehaul）指DU连接CU部分，而回传（Backhaul）是CU和核心网之间的通信承载。<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756734949281675673494885.png"></li>
+</ul>
+<hr>
+<h3 id="1-1-1-核心网架构演进">1.1.1 核心网架构演进</h3>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756788736861675678873591.png"></p>
+<ul>
+<li>模拟通信：保密性差</li>
+<li>数字通信：数字化，2.5G后可上网阶段</li>
+<li>互联网：IP化，传输媒介发生改变，网线、光纤投入使用，设备围绕IP 端口进行，承载控制分离，网元功能细化。网业分离，分为控制面、用户面。3/4G阶段</li>
+<li>SDN/NFV
+<ul>
+<li><code>Software-defined Networking</code> 软件定义网络</li>
+<li><code>Network Functions Virtualization</code>网络功能虚拟化，</li>
+<li>网络架构颠覆，基于服务的网络架构，网元数量大量增加，UPF只用于 处理，控制处理分离，控制和用户完全的分离，软件硬件分离架构灵活 网元虚拟化易于操作</li>
+<li>总结：模块化，虚拟化</li>
+</ul>
+</li>
+</ul>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756793739341675679372973.png"></p>
+<hr>
+<p>4G核心网架构<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756796859271675679685214.png"></p>
+<hr>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756797289251675679728241.png"></p>
+<p>各模块基于NFC实现虚线框内，为控制面 UPF为用户面，实现用户面控制面分离。<br>
+各网元功能见下节</p>
+<hr>
+<h3 id="1-1-2-无线接入网演进">1.1.2 无线接入网演进</h3>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756854729241675685472717.png"><br>
+“分合分”的表象<br>
+CU对实时性要求不高，实时性要求高在DU实现。</p>
+<hr>
+<h2 id="1-2-5G网元功能与接口">1.2 5G网元功能与接口</h2>
+<h3 id="1-2-1-5G移动通信整体网络架构">1.2.1 5G移动通信整体网络架构</h3>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756858089261675685808001.png"><br>
+网络功能间的信息交互基于两种方式表示：服务表示（模块名称前+N，指对外暴露的接口，多对一接口，用到服务注册和服务发现的功能，相互之间不需要知道功能所在的地址）、点对点表示（不同功能实体之间有约定好的接口，比较简单，不考虑注册和发现，但是拓展性弱）。</p>
+<hr>
+<p>点对点表示如下图1-9<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756873859251675687385837.png"></p>
+<hr>
+<ul>
+<li><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/yao_zhuang/article/details/112298987">5GC各网元功能介绍<i class="fas fa-external-link-alt"></i></a>
+<ul>
+<li>AMF Access and Mobility Management Function 接入和移动性管理功能</li>
+<li>SMF Session Management function 会话管理功能</li>
+<li>AUSF Authentication Server Function 认证服务器功能</li>
+<li>UPF The User plane function 用户面功能</li>
+<li>PCF Policy Control function 策略控制功能</li>
+<li>UDM The Unified Data Management 统一数据管理功能</li>
+<li>NRF NF Repository Function 网元存储功能</li>
+<li>NSSF The Network Slice Selection Function 网络切片选择</li>
+<li>NEF Network Exposure Function 网络开放功能</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>CU DU分离逻辑图：<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756874959311675687495876.png"><br>
+层与层之间的交互：<br>
+<code>CU</code>分为 <code>CU-C</code> C控制 <code>CU-U</code> U用户<br>
+内部接口： F1-C F1-U，对外接口Xn-C Xn-U<br>
+上图不代表实际连接情况，不等于gNB等于CU+DU 具体连接关系可调节。</p>
+<hr>
+<p>CU DU有八种划分方式<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756886180071675688617948.png"><br>
+CU便于集中化管理，DU便于更大传输带宽，更低时延。<br>
+3GPP(3rd Generation Partnership Project)标准确定了option2</p>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756888489251675688848727.png"></p>
+<hr>
+<h3 id="1-2-2-5G主要网元功能">1.2.2 5G主要网元功能</h3>
+<p>主要功能如下图：<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756892669271675689266684.png"></p>
+<hr>
+<p><strong>UPF（用户面功能）</strong><br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756899850301675689984959.png"><br>
+掌握主要功能：</p>
+<ul>
+<li>gNB切换的本地移动锚点（适用时）：在不同地方使用网络确保连接连通，切换前后保持不变</li>
+<li>连接到移动通信网络的外部PDU会话点</li>
+<li>N接口切换过程中，数据匹配路径，路由与转发</li>
+<li>Uplink流量验证（SDF到QoS流映射）</li>
+</ul>
+<hr>
+<p><strong>SMF（会话管理功能）</strong><br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756902609281675690260048.png"></p>
+<ul>
+<li>终端发起寻呼，接入网可以响应，进行会话的建立</li>
+<li>终端IP地址的分配和管理</li>
+<li>选择合适的UPF 基于策略控制用户面功能</li>
+</ul>
+<hr>
+<p><strong>AMF（访问和移动性管理功能）</strong></p>
+<ul>
+<li>NAS信令的加密和保护</li>
+<li>注册管理</li>
+<li>在UE和SMF直接传输SM消息，透传信息</li>
+</ul>
+<hr>
+<p><strong>gNB/en-gNB</strong></p>
+<ul>
+<li>CU-C (Central Unit Control plane)
+<ul>
+<li>不同接口的管理和数据处理</li>
+<li>连接管理包括：单连接 双连接 多链接 和D2D</li>
+<li>系统内和系统间负载均衡</li>
+<li>切片资源动态管理</li>
+</ul>
+</li>
+<li>CU-U
+<ul>
+<li>数据包的处理和转换</li>
+</ul>
+</li>
+<li>DU
+<ul>
+<li>资源调度、传输模式的转换、信道映射</li>
+</ul>
+</li>
+<li>AAU-RF(RAdio Frequency)
+<ul>
+<li>信号手法 Massive MIMO 大规模天线处理 频率时间同步 AAS实现机制</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="1-2-3-接口协议及功能">1.2.3 接口协议及功能</h3>
+<p>数据传输需遵循各个协议的要求，下面是主要接口<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756906879241675690687380.png"></p>
+<p>NG接口是接入网和核心网之间的接口，控制面和用户面分离<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756908019261675690801836.png"></p>
+<p>NG接口控制面功能流程描述<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756910649241675691064628.png"></p>
+<p>NG-U接口主要功能：用户面数据传送</p>
+<hr>
+<p>Xn接口是基站之间的接口，分为控制面用户面 Xn-C是CU-C之间的接口，Xn-U是CU-U之间的接口<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756912029261675691202097.png"></p>
+<p>Xn-C接口功能流程描述<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756914329241675691432416.png"></p>
+<p>Xn-U主要功能<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756914492731675691449217.png"></p>
+<hr>
+<p>E1接口指CU-C与CU-U接口，只有控制面接口，支持信令信息的交换<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756915219511675691521910.png"></p>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756916769241675691676603.png"></p>
+<hr>
+<p>F1接口是CU与DU之间的接口，支持信令交互，包括不同eNB-point的数据发送，包括控制面用户面<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756917859241675691785070.png"></p>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756918389331675691838596.png"></p>
+<hr>
+<p>终端和基站之间的Uu接口<br>
+控制面：涉及终端、基站、核心网<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756919009241675691900217.png"></p>
+<p>NAS层属于控制面功能<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756923119251675692311371.png"></p>
+<p>用户面：<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16756923420071675692341974.png"><br>
+新的协议层SDAP层：业务适配层，完成流到无线承载的QoS映射，为每个报文打上流表示</p>
+<hr>
+<h2 id="1-3-5G网络组网部署">1.3 5G网络组网部署</h2>
+<h3 id="1-3-1-SA组网和NSA组网">1.3.1 SA组网和NSA组网</h3>
+<p><code>NSA(Not standalon)</code>：非独立：终端同一时间同时连接4g 5g基站 接入4g或5g的核心网<br>
+<code>SA(standalone)</code>：独立<br>
+区分根本不同：同一时间5g基站能否单独提供服务<br>
+原因：5g在刚刚引入时基站数量不足</p>
+<hr>
+<p>SA组网方案：<code>option2/5</code><br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757775973941675777596517.png"><br>
+<code>option2</code>:5gc–gNB  <code>option5</code>:5gc–ng-eNB</p>
+<hr>
+<p>NAS组网部署：</p>
+<p><code>option3</code>:4g 5g 基站合用4g核心网，控制面仅经由enb连接到epc，优势在于不必新增5G核心网，缺点是4g核心网有信令过载风险，该阶段主要解决初期的5g覆盖<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757807033861675780702508.png"><br>
+<code>option7</code>:核心网变为5g核心网，控制网由ngenb连接到5gc，解决了4g核心网信令过载风险，主要面向5g容量需求 基站间接口变为Xn<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757812153901675781214431.png"><br>
+<code>option4</code>:控制面由gnb连接到5gc，该阶段不仅面向5g的增强型移动带宽场景（eMBB） 大规模物联网（mMTC）和低时延高可靠连接（URLLC），是面向万物连接时代5G的多样化业务</p>
+<blockquote>
+<p>Ultra-Reliable and Low Latency Communications–URLLC<br>
+Massive MachineType Communication–mMTC<br>
+Enhanced Mobile Broadband–eMBB</p>
+</blockquote>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757815473891675781547141.png"><br>
+<code>option4/7</code> 不常用 5G核心网主要使用独立组网</p>
+<hr>
+<p>3GPP协议下对基站定义：</p>
+<ul>
+<li><code>eNB</code> 面向终端提供 E-UTRAN用户面控制面协议，通过S1接口连接EPC（4g核心网）</li>
+<li><code>ng-eNB</code> 面向终端提供 E-UTRAN用户面控制面协议，通过NG接口连接5GC（5G核心网）</li>
+<li><code>gNB</code> 面向终端提供NR用户面和控制面协议，通过NG接口连接到5GC</li>
+<li><code>en-gNB</code> 面向终端提供NR用户面和控制面协议，通过S1-U接口连接到EPC的网络节点</li>
+</ul>
+<hr>
+<p>SA NSA组网方案对比<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757825473861675782546459.png"></p>
+<h3 id="1-3-2-MR-DC技术">1.3.2 MR-DC技术</h3>
+<p>Multi-RAT Dual Connectivity 多接入网技术双连接<br>
+一部终端可以同时连接4G 5G网络，同时使用两个网络进行业务，此时终端需要具备至少两个MAC实体，支持双发双收。<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757832740691675783274003.png"></p>
+<hr>
+<p>控制面协议栈<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757838855101675783885460.png"><br>
+MN为主节点，SN辅节点，各自有RRC实体，可以生成要发送到终端的PDU，只有主节点才能连接到核心网</p>
+<hr>
+<p>用户面承载概念<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757839978951675783997280.png"><br>
+<code>MCG(Master Cell Group)</code>:主小区组，和主节点相关呃校区<br>
+MCG承载的RLC实体一定落在主节点<br>
+<code>SCG(Secondary Cell Group)</code>:辅小区组，和辅节点相关<br>
+SCG承载的RLC实体落在辅节点</p>
+<p>分离承载：RLC实体既可以存在于主节点也可以存在于辅节点<br>
+承载可理解为用户面传递数据概念，从核心网数据经用户面传递的路径</p>
+<blockquote>
+<p>有了双连接的概念，就有了MCG和SCG的概念。从信令交互角度来看，UE首先发起随机接入过程的小区（Cell）所在的组（Group）就是MCG。假若5G NR基站和LTE基站一起给UE提供双连接服务，LTE作主基站，5G NR基站作辅基站，那么LTE所提供的多个小区就是MCG（Master CellGroup，主小区组），5G NR提供的多个小区就是SCG（Secondary Cell Group，辅小区组）。MCG的小区和SCG的小区应该配置成邻小区关系。<br>
+<a class="link" target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1719715772936464451">5G组网MCG与SCG<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<hr>
+<p><code>CA(Carrier Aggregation)</code> 载波聚合<br>
+终端也与多个接入网网元连接，但是控制面连接仅有一个<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757845639041675784563689.png"><br>
+<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41245381/article/details/105700029">5G NR协议栈<i class="fas fa-external-link-alt"></i></a></p>
+<hr>
+<h3 id="1-3-3-CU-DU组网部署">1.3.3 CU/DU组网部署</h3>
+<p><code>CU DU AAU</code>三级配置可搭配处不同网络结构<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757850326691675785032624.png"></p>
+<hr>
+<p><strong>为支持eMBB的覆盖和容量需求</strong>，CU DU 分离部署，分为Macro(宏)和Micro(微)方式<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757867568931675786756509.png"><br>
+分离部署 两种方式相同<br>
+合设部署 DU+RRU-微组网部署</p>
+<p>在密集部署条件下，联合多个DU形成基带池（时效性好），提高网络覆盖和容量，组网方式如下图<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757880139171675788013876.png"></p>
+<p>DU CU一起部署-&gt;大带宽低时延：视频、虚拟现实<br>
+DU CU分离-&gt;对带宽时延要求不高：语音业务<br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757882179771675788217937.png"></p>
+<hr>
+<p><strong>mMTC</strong><br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757883049691675788304911.png"></p>
+<hr>
+<h4 id="缩略词解释">缩略词解释</h4>
+<p><img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757884468961675788446492.png"><br>
+<img lazyload="" alt="" data-src="https://fastly.jsdelivr.net/gh/2incccc/MyTuTu@main/image/16757884638941675788463153.png"></p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                【大唐杯】5G网络架构与组网部署
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2023/02/06/DT-5g-network/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">2inc</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2023-02-06 22:13</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/5G/">5G</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%80%9A%E4%BF%A1/">通信</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%A4%A7%E5%94%90%E6%9D%AF/">大唐杯</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/07/15/neural-network-training/"
+                                   title="神经网络训练"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">神经网络训练</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://www.zinan2inc.xyz/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'true' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87"><span class="nav-text">课程目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-5G%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B%E8%B6%8B%E5%8A%BF"><span class="nav-text">1.1 5G网络架构的演进趋势</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E6%A0%B8%E5%BF%83%E7%BD%91%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B"><span class="nav-text">1.1.1 核心网架构演进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%85%A5%E7%BD%91%E6%BC%94%E8%BF%9B"><span class="nav-text">1.1.2 无线接入网演进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-5G%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="nav-text">1.2 5G网元功能与接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E6%95%B4%E4%BD%93%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="nav-text">1.2.1 5G移动通信整体网络架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-5G%E4%B8%BB%E8%A6%81%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD"><span class="nav-text">1.2.2 5G主要网元功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%8A%9F%E8%83%BD"><span class="nav-text">1.2.3 接口协议及功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-5G%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2"><span class="nav-text">1.3 5G网络组网部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-SA%E7%BB%84%E7%BD%91%E5%92%8CNSA%E7%BB%84%E7%BD%91"><span class="nav-text">1.3.1 SA组网和NSA组网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-MR-DC%E6%8A%80%E6%9C%AF"><span class="nav-text">1.3.2 MR-DC技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-CU-DU%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2"><span class="nav-text">1.3.3 CU&#x2F;DU组网部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%A9%E7%95%A5%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="nav-text">缩略词解释</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">2inc</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://github.com/2incccc/2incccc.github.io">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">18.9k</span>
+                </span>
+            
+
+            
+
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E6%A0%87"><span class="nav-text">课程目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95"><span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-5G%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E7%9A%84%E6%BC%94%E8%BF%9B%E8%B6%8B%E5%8A%BF"><span class="nav-text">1.1 5G网络架构的演进趋势</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E6%A0%B8%E5%BF%83%E7%BD%91%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B"><span class="nav-text">1.1.1 核心网架构演进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%85%A5%E7%BD%91%E6%BC%94%E8%BF%9B"><span class="nav-text">1.1.2 无线接入网演进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-5G%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD%E4%B8%8E%E6%8E%A5%E5%8F%A3"><span class="nav-text">1.2 5G网元功能与接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-5G%E7%A7%BB%E5%8A%A8%E9%80%9A%E4%BF%A1%E6%95%B4%E4%BD%93%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="nav-text">1.2.1 5G移动通信整体网络架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-5G%E4%B8%BB%E8%A6%81%E7%BD%91%E5%85%83%E5%8A%9F%E8%83%BD"><span class="nav-text">1.2.2 5G主要网元功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E6%8E%A5%E5%8F%A3%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%8A%9F%E8%83%BD"><span class="nav-text">1.2.3 接口协议及功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-5G%E7%BD%91%E7%BB%9C%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2"><span class="nav-text">1.3 5G网络组网部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-SA%E7%BB%84%E7%BD%91%E5%92%8CNSA%E7%BB%84%E7%BD%91"><span class="nav-text">1.3.1 SA组网和NSA组网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-MR-DC%E6%8A%80%E6%9C%AF"><span class="nav-text">1.3.2 MR-DC技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-CU-DU%E7%BB%84%E7%BD%91%E9%83%A8%E7%BD%B2"><span class="nav-text">1.3.3 CU&#x2F;DU组网部署</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%A9%E7%95%A5%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="nav-text">缩略词解释</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/lazyload.min.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.0/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+        
+            
+<script class="custom-inject-js" src="/js/custom.js" data-pjax></script>
+
+        
+    
+
+</body>
+</html>
